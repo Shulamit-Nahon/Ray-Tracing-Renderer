@@ -1,0 +1,80 @@
+package primitives;
+
+import java.util.Objects;
+
+public class Point3D {
+    final Coordinate x;
+    final Coordinate y;
+    final Coordinate z;
+
+    final static Point3D ZERO = new Point3D(0d, 0d, 0d);
+
+    public Point3D(double x_, double y_, double z_) {
+        this.x = new Coordinate(x_);
+        this.y = new Coordinate(y_);
+        this.z = new Coordinate(z_);
+    }
+
+    public Point3D(Coordinate x_, Coordinate y_, Coordinate z_) {
+        this(x_.coord, y_.coord, z_.coord);
+    }
+
+    public Coordinate getX() {
+        return x;
+    }
+
+    public Coordinate getY() {
+        return y;
+    }
+
+    public Coordinate getZ() {
+        return z;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point3D point3D = (Point3D) o;
+        return x.equals(point3D.x) && y.equals(point3D.y) && z.equals(point3D.z);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + "," + z + ')';
+    }
+
+    public double distanceSquared(Point3D point) {
+        final double x2 = point.x.coord;
+        final double y2 = point.y.coord;
+        final double z2 = point.z.coord;
+        final double x1 = this.x.coord;
+        final double y1 = this.y.coord;
+        final double z1 = this.z.coord;
+
+        return ((x2 - x1)*(x2 - x1))+((y2 - y1)*(y2 - y1))+((z2 - z1) * (z2 - z1));
+    }
+
+    public double distance(Point3D point) {
+        return Math.sqrt(distanceSquared(point));
+    }
+
+    public Point3D add(Vector v) {
+        return new Point3D(
+                this.x.coord + v.head.x.coord,
+                this.y.coord + v.head.y.coord,
+                this.z.coord + v.head.z.coord);
+    }
+
+    public Vector subtract(Point3D pt2) {
+        if (pt2.equals(this)) {
+            throw new IllegalArgumentException("cannot create Vector to Point(0,0,0)");
+        }
+        return  new Vector(new Point3D(
+                x.coord - pt2.x.coord,
+                y.coord - pt2.y.coord,
+                z.coord - pt2.z.coord
+        ));
+    }
+
+}

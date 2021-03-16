@@ -2,10 +2,27 @@ package primitives;
 
 import static primitives.Point3D.ZERO;
 
+/**
+ * Vector in 3D for RayTracing
+ */
 public class Vector {
 
     protected Point3D head;
 
+    /**
+     * get accessor for head Point
+     *
+     * @return a new Point3D corresponding to the head
+     */
+    public Point3D getHead() {
+        return head;
+    }
+
+    /**
+     * primary  constructor for Vector class
+     *
+     * @param head_
+     */
     public Vector(Point3D head_) {
         if (head_.equals(ZERO)) {
            throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
@@ -13,10 +30,25 @@ public class Vector {
         head = head_;
     }
 
+    /**
+     * constructor for Vector class
+     *
+     * @param x_  X Coordinate of the head Point
+     * @param y_  Y Coordinate of the head Point
+     * @param z_  Z Coordinate of the head Point
+     */
     public Vector (Coordinate x_, Coordinate y_, Coordinate z_) {
+
         this(x_.coord, y_.coord, z_.coord);
     }
 
+    /**
+     * constructor for Vector class
+     *
+     * @param x_ value for X Coordinate of the head Point
+     * @param y_ value for Y Coordinate of the head Point
+     * @param z_ value for Z Coordinate of the head Point
+     */
     public Vector (double x_, double y_, double z_) {
         this(new Point3D(x_,y_,z_));
     }
@@ -30,9 +62,15 @@ public class Vector {
     }
     @Override
     public String toString() {
-      return "{" + head + '}';
+
+        return "{" + head + '}';
    }
 
+    /**
+     *
+     * @param vector Vector
+     * @return new Vector (u+v)
+     */
     public Vector add(Vector vector) {
         double x = head.x.coord + vector.head.x.coord;
         double y = head.y.coord + vector.head.y.coord;
@@ -41,6 +79,11 @@ public class Vector {
         return new Vector(new Point3D(x, y, z));
     }
 
+    /**
+     *
+     * @param  vector
+     * @return new Vector(u-v)
+     */
     public Vector substract (Vector vector) {
         double x = head.x.coord - vector.head.x.coord;
         double y = head.y.coord - vector.head.y.coord;
@@ -49,6 +92,12 @@ public class Vector {
         return new Vector(new Point3D(x, y, z));
     }
 
+    /**
+     * creating a new Vector corresponding to the actual one
+     * scaled by scaling factor
+     *
+     * @param scalar scaling factot
+     */
     public Vector scale(double scalar) {
         if(Double.compare(scalar,0d)==0) {
             throw new IllegalArgumentException("You can not multiplie by zero");
@@ -60,6 +109,13 @@ public class Vector {
             return new Vector(new Point3D(x, y, z));
     }
 
+    /**
+     * Cross product (vectorial product)
+     *
+     * @param v
+     * @return new Vector resulting from cross product
+     * @link https://en.wikipedia.org/wiki/Cross_product
+     */
     public Vector crossProduct(Vector v) {
         double u1 = head.x.coord;
         double u2 = head.y.coord;
@@ -76,7 +132,12 @@ public class Vector {
         ));
     }
 
-
+    /**
+     * dot product between two vectors (scalar product)
+     *
+     * @param v the right vector of U.V
+     * @return scalre value of dot product
+     */
     public double dotProduct(Vector v) {
         double u1 = head.x.coord;
         double u2 = head.y.coord;
@@ -89,6 +150,10 @@ public class Vector {
         return (u1 * v1 + u2 * v2 + u3 * v3);
     }
 
+    /**
+     *
+     * @return length Squared
+     */
     public double lengthSquared() {
         double u1 = head.x.coord;
         double u2 = head.y.coord;
@@ -96,10 +161,20 @@ public class Vector {
 
         return u1 * u1 + u2 * u2 + u3 * u3;
     }
+
+    /**
+     * @return length using Pythagoras
+     */
     public double length() {
+
         return Math.sqrt(lengthSquared());
     }
 
+    /**
+     * normalizing the current Vector
+     *
+     * @return this Vector normalized
+     */
     public Vector normalize() {
         double length = this.length();
 
@@ -116,6 +191,11 @@ public class Vector {
         return this;
     }
 
+    /**
+     * creating a new Vector corresponding to the current values normalized
+     *
+     * @return new Vector normalized
+     */
     public Vector normalized() {
         Vector result = new Vector(head);
         result.normalize();

@@ -4,19 +4,38 @@ import primitives.*;
 
 import java.util.List;
 
+/**
+ * Sphere class
+ * defined by the main center point and radius of the sphere
+ */
 public class Sphere implements Geometry {
+    /**
+     * center point of Sphere
+     */
     Point3D cenetr;
+    /**
+     * radius of  Sphere
+     */
     double radius;
 
-
+    /**
+     * @return center point of Sphere
+     */
     public Point3D getCenetr() {
         return cenetr;
     }
-
+    /**
+     * @return radius of  Sphere
+     */
     public double getRadius() {
         return radius;
     }
 
+    /**
+     * constructor for sphere
+     * @param cenetr  Point3D for center point of Sphere
+     * @param radius value for radius of  Sphere
+     */
     public Sphere(Point3D cenetr, double radius) {
         this.cenetr = cenetr;
         this.radius = radius;

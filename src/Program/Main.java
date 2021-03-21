@@ -73,5 +73,11 @@ public final class Main {
             out.println("ERROR: Point - Point does not work correctly");
 
         out.println("If there were no any other outputs - all tests succeeded!");
+
+
+
+//        // Test substract with points and vectors
+//        if (!new Vector(1, 1, 1).equals(new Point3D(2, 3, 4).subtract(p1)))
+//            out.println("ERROR: Point - Point does not work correctly");
     }
 }

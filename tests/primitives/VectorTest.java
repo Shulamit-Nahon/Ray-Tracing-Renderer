@@ -60,15 +60,13 @@ class VectorTest {
         // =============== Boundary Values Tests ==================
         // TC11: test zero vector from cross-productof co-lined vectors
 
-      //  assertThrows("crossProduct() for parallel vectors does not throw an exception",
-               // IllegalArgumentException.class, () -> v1.crossProduct(v3));
+        //  assertThrows("crossProduct() for parallel vectors does not throw an exception",
+        // IllegalArgumentException.class, () -> v1.crossProduct(v3));
         try {
             v1.crossProduct(v3);
-             fail("crossProduct() for parallel vectors does not throw an exception");
-         } catch (IllegalArgumentException e) {}
+            fail("crossProduct() for parallel vectors does not throw an exception");
+        } catch (IllegalArgumentException e) {}
     }
-
-
 
     @Test
     void dotProduct() {
@@ -81,8 +79,8 @@ class VectorTest {
 
     @Test
     void lengthSquared() {
-       // if (!isZero(v1.lengthSquared() - 14))
-            //fail("ERROR: lengthSquared() wrong value");
+        // if (!isZero(v1.lengthSquared() - 14))
+        //fail("ERROR: lengthSquared() wrong value");
         double result=v1.lengthSquared();
         assertTrue(isZero(result-14),"ERROR: lengthSquared() wrong value");
     }
@@ -109,5 +107,15 @@ class VectorTest {
         Vector u = v1.normalized();
         if (u == v1)
             fail("ERROR: normalizated() function does not create a new vector");
+    }
+    @Test
+    void testZeroPoint(){
+        try{//test zero vector
+            new Vector(0d,0d,0d);
+            fail("ERROR: zero vector dose not throw an exception");
+        }
+        catch (IllegalArgumentException e){
+            out.println("good:  vector 0 not created");
+        }
     }
 }

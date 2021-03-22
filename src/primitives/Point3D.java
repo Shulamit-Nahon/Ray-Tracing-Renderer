@@ -34,6 +34,7 @@ public class Point3D {
         this(x_.coord, y_.coord, z_.coord);
     }
 
+
     /**
      * @return Returns the X-axis values of the point
      */

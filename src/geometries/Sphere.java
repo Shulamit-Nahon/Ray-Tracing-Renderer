@@ -36,7 +36,7 @@ public class Sphere implements Geometry {
      * @param cenetr  Point3D for center point of Sphere
      * @param radius value for radius of  Sphere
      */
-    public Sphere(Point3D cenetr, double radius) {
+    public Sphere(double radius,Point3D cenetr) {
         this.cenetr = cenetr;
         this.radius = radius;
     }
@@ -51,7 +51,11 @@ public class Sphere implements Geometry {
 
     @Override
     public Vector getNormal(Point3D point) {
-        return null;
+        
+        if (point.equals(cenetr))
+            throw new IllegalArgumentException("ERROR: point equals center");
+        Vector v= point.subtract(cenetr);
+        return v.normalize();
     }
 
     @Override

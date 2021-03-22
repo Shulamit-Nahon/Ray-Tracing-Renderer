@@ -60,6 +60,8 @@ public class Vector {
         Vector vector = (Vector) o;
        return head.equals(vector.head);
     }
+
+
     @Override
     public String toString() {
 

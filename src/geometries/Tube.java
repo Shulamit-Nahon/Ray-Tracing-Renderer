@@ -3,6 +3,8 @@ package geometries;
 import primitives.*;
 import java.util.List;
 
+import static primitives.Util.isZero;
+
 /**
  * Tube class represented by radius and ray
  */
@@ -35,7 +37,7 @@ public class Tube implements Geometry {
      * @param axisRay for The tube ray
      * @param radius for Tube base radius
      */
-    public Tube(Ray axisRay, double radius) {
+    public Tube(double radius,Ray axisRay ) {
         this.axisRay = axisRay;
         this.radius = radius;
     }
@@ -49,8 +51,18 @@ public class Tube implements Geometry {
     }
 
     @Override
-    public Vector getNormal(Point3D point) {
-        return null;
+    public Vector getNormal(Point3D p)
+    {
+        Point3D p0=axisRay.getpOrigin();
+        Vector v= axisRay.getDirection();
+        Vector p0_p=p.subtract(p0);
+        double t= v.dotProduct(p0_p);
+        if(isZero(t))
+            return p0_p;
+        Point3D O= p0.add(v.scale(t));
+        Vector n= p.subtract(O);
+        return n.normalize();
+
     }
 
     @Override

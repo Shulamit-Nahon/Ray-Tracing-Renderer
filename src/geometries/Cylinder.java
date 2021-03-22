@@ -27,7 +27,7 @@ public class Cylinder extends Tube {
      * @param height double cylinder height value
      */
     public Cylinder(Ray axisRay, double radius, double height) {
-        super(axisRay, radius);
+        super(radius,axisRay);
         this.height = height;
     }
 
@@ -40,9 +40,15 @@ public class Cylinder extends Tube {
                 '}';
     }
 
+    /**
+     *implementation of get normal from geometry interface
+     * @param point Point3D, reference point
+     * @return normal of the Cylinder(Heir from Tube)
+     */
     @Override
     public Vector getNormal(Point3D point) {
-        return null;
+
+        return getNormal(point);
     }
 
     @Override

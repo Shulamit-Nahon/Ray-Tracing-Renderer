@@ -13,4 +13,6 @@ class TriangleTest {
         assertEquals(new Vector(0d,0d,-1d), tr.getNormal(null));
     }
 
+
 }
+

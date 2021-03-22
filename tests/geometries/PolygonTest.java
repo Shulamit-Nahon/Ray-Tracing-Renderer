@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PolygonTest {
 
+
     /**
      * Test method for
      * {@link geometries.Polygon#Polygon(Point3D...)}.

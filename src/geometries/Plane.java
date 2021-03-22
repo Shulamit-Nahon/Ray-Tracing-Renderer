@@ -26,11 +26,12 @@ public class Plane implements Geometry{
         return q0;
     }
 
-    /**
-     * @return Vector vertical to the plane
+    /**getter of the normal vector filed
+     * @return normal Vector  to the plane
      */
     public Vector getNormal() {
-        return normal;
+
+       return normal;
     }
 
 
@@ -42,8 +43,14 @@ public class Plane implements Geometry{
                 '}';
     }
 
+    /**
+     *implementation of get normal from geometry interface
+     * @param point Point3D, reference point
+     * @return normal of the tube
+     */
     @Override
-    public Vector getNormal(Point3D point){ return null; }
+    public Vector getNormal(Point3D point){
+        return normal; }
 
     /**
      * plane constructor receiving 3 point3D

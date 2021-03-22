@@ -7,11 +7,11 @@ public class Ray {
     /**
      * The starting point of the foundation on the axis
      */
-    Point3D _pOrigin;
+     final Point3D _pOrigin;
     /**
      * Vector direction that defines the direction of the ray
      */
-    Vector _direction;
+    final Vector _direction;
 
     /**
      * Ray constructor receiving a Point3D and vector To create the ray

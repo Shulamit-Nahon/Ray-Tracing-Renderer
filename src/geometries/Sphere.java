@@ -9,14 +9,10 @@ import java.util.List;
  * defined by the main center point and radius of the sphere
  */
 public class Sphere implements Geometry {
-    /**
-     * center point of Sphere
-     */
-    Point3D cenetr;
-    /**
-     * radius of  Sphere
-     */
-    double radius;
+
+    Point3D cenetr; //center point of Sphere
+
+    double radius; //radius of  Sphere
 
     /**
      * @return center point of Sphere

@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
 /**
- * Test for Vector
- * @author shulamit and lea
+ * Testing Vectors
  */
 class VectorTest {
 

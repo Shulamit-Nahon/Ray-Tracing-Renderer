@@ -9,17 +9,13 @@ import java.util.List;
  * Defined by a point in space and a vector perpendicular to the plane
  */
 public class Plane implements Geometry{
-    /**
-     * point in the space of the plain
-     */
-    final Point3D q0;
-    /**
-     * Vector vertical to the plane
-     */
-    final Vector normal;
+
+    final Point3D q0; //point in the space of the plain
+
+    final Vector normal; //Vector vertical to the plane
 
     /**
-     * @returnA point in the space of the plain
+     * @return point in the space of the plain
      */
     public Point3D getQ0() {
 
@@ -30,7 +26,6 @@ public class Plane implements Geometry{
      * @return normal Vector  to the plane
      */
     public Vector getNormal() {
-
        return normal;
     }
 

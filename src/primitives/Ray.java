@@ -4,14 +4,10 @@ package primitives;
  * a ray defined by a point and a direction
  */
 public class Ray {
-    /**
-     * The starting point of the foundation on the axis
-     */
-     final Point3D _pOrigin;
-    /**
-     * Vector direction that defines the direction of the ray
-     */
-    final Vector _direction;
+
+    final Point3D _pOrigin; //The starting point of the foundation on the axis
+
+    final Vector _direction; //Vector direction that defines the direction of the ray
 
     /**
      * Ray constructor receiving a Point3D and vector To create the ray

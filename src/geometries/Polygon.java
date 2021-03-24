@@ -9,14 +9,10 @@ import static primitives.Util.*;
  * system
  */
 public class Polygon implements Geometry {
-    /**
-     * List of polygon's vertices
-     */
-    protected List<Point3D> vertices;
-    /**
-     * Associated plane in which the polygon lays
-     */
-    protected Plane plane;
+
+    protected List<Point3D> vertices; // List of polygon's vertices
+
+    protected Plane plane; //Associated plane in which the polygon lays
 
     /**
      * Polygon constructor based on vertices list. The list must be ordered by edge

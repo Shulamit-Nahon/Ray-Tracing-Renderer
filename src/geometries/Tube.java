@@ -9,14 +9,10 @@ import static primitives.Util.isZero;
  * Tube class represented by radius and ray
  */
 public class Tube implements Geometry {
-    /**
-     * The tube ray
-     */
-    final Ray axisRay;
-    /**
-     *  Tube base radius
-     */
-    final double radius;
+
+    final Ray axisRay; //Tube ray
+
+    final double radius; //Tube base radius
 
     /**
      * @return The tube ray
@@ -58,11 +54,10 @@ public class Tube implements Geometry {
         Vector p0_p=p.subtract(p0);
         double t= v.dotProduct(p0_p);
         if(isZero(t))
-            return p0_p;
+            return p0_p.normalize();
         Point3D O= p0.add(v.scale(t));
         Vector n= p.subtract(O);
         return n.normalize();
-
     }
 
     @Override

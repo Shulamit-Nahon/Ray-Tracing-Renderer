@@ -8,10 +8,8 @@ import java.util.List;
  * defined by its height
  */
 public class Cylinder extends Tube {
-/**
- * cylinder height value, radius and ray
- */
-    final double height;
+
+    final double height; //cylinder height value, radius and ray
 
     /**
      * @return  cylinder height value
@@ -47,6 +45,8 @@ public class Cylinder extends Tube {
      */
     @Override
     public Vector getNormal(Point3D point) {
+      //////////////
+
 
         return getNormal(point);
     }

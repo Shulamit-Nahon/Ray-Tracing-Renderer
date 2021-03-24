@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
     @Test
     void testNormal(){
-        Triangle tr=new Triangle(new Point3D(0,0,0),new Point3D(1,1,1),new Point3D(1,0,1));
+        Triangle tr=new Triangle(new Point3D(0,0,1),new Point3D(1,1,1),new Point3D(1,0,1));
         assertEquals(new Vector(0d,0d,-1d), tr.getNormal(null));
     }
 

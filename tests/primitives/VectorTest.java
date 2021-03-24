@@ -1,6 +1,8 @@
 package primitives;
 
 import org.junit.jupiter.api.Test;
+import primitives.Point3D;
+import primitives.Vector;
 
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,6 +18,7 @@ class VectorTest {
     Vector v2 = new Vector(0, 3, -2);
     Vector v3 = new Vector(-2, -4, -6);
     Point3D p1 = new Point3D(1, 2, 3);
+
     @Test
     void add() {
         //test add
@@ -68,6 +71,8 @@ class VectorTest {
         } catch (IllegalArgumentException e) {}
     }
 
+
+
     @Test
     void dotProduct() {
         // test Dot-Product
@@ -107,15 +112,5 @@ class VectorTest {
         Vector u = v1.normalized();
         if (u == v1)
             fail("ERROR: normalizated() function does not create a new vector");
-    }
-    @Test
-    void testZeroPoint(){
-        try{//test zero vector
-            new Vector(0d,0d,0d);
-            fail("ERROR: zero vector dose not throw an exception");
-        }
-        catch (IllegalArgumentException e){
-            out.println("good:  vector 0 not created");
-        }
     }
 }

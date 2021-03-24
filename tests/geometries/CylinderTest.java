@@ -1,14 +1,12 @@
-package primitives;
+package geometries;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Point3DTest {
+class CylinderTest {
 
     @Test
-    void subtract() {
+    void getNormal() {
     }
-
-    
 }

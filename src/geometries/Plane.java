@@ -60,6 +60,8 @@ public class Plane implements Geometry{
      * @param p3 Point3D
      */
     public Plane(Point3D p1,Point3D p2, Point3D p3){
+        if(p1==p2 ||p1==p3 || p2==p3)
+            throw  new IllegalArgumentException("two points can not be similiar");
         q0 = p1;
         Vector v1 = p2.subtract(p1);
         Vector V2 = p3.subtract(p1);
@@ -67,6 +69,7 @@ public class Plane implements Geometry{
         v3.normalize();
         normal = v3;
     }
+
 
     /**
      * constructor for Plane

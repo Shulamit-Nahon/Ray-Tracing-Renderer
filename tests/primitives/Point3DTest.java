@@ -9,11 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class Point3DTest {
 
+    Point3D p1=new Point3D(1d,0d,1d);
+    Point3D p2=new Point3D(1d,0d,-1d);
+
     /**
      * Test method for {@link primitives.Point3D#subtract(Point3D)}.
      */
     @Test
     void subtract() {
+        assertEquals(new Vector(new Point3D(0d,0d,2d)),p1.subtract(p2),"ERROR: subtract between two point is incorrect");
     }
 
     /**
@@ -21,6 +25,7 @@ class Point3DTest {
      */
     @Test
     void distanceSquared() {
+        assertEquals(4d,p1.distanceSquared(p2),"ERROR: the action distanceSquared is incorrect ");
     }
 
     /**
@@ -28,6 +33,7 @@ class Point3DTest {
      */
     @Test
     void distance() {
+        assertEquals(2d,p1.distance(p2),"ERROR: the action distance is incorrect ");
     }
 
     /**
@@ -35,5 +41,6 @@ class Point3DTest {
      */
     @Test
     void add() {
+        assertEquals(new Point3D(2d,0d,0d),p1.add(new Vector(new Point3D(1d,0d,-1d))),"ERROR: the action add is incorrect");
     }
 }

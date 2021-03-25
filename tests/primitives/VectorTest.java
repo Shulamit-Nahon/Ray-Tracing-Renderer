@@ -18,6 +18,9 @@ class VectorTest {
     Vector v3 = new Vector(-2, -4, -6);
     Point3D p1 = new Point3D(1, 2, 3);
 
+    /**
+     * Test method for {@link primitives.Vector#add(Vector)}.
+     */
     @Test
     void add() {
         //test add
@@ -28,6 +31,9 @@ class VectorTest {
             out.println("ERROR: Point + Vector does not work correctly");
     }
 
+    /**
+     * Test method for {@link primitives.Vector#substract(Vector)}.
+     */
     @Test
     void substract() {
         //test substract
@@ -36,6 +42,9 @@ class VectorTest {
 
     }
 
+    /**
+     * Test method for {@link primitives.Vector#scale(double)}.
+     */
     @Test
     void scale() {
         //test scale
@@ -70,8 +79,9 @@ class VectorTest {
         } catch (IllegalArgumentException e) {}
     }
 
-
-
+    /**
+     * Test method for {@link primitives.Vector#dotProduct(Vector)}.
+     */
     @Test
     void dotProduct() {
         // test Dot-Product
@@ -81,6 +91,9 @@ class VectorTest {
             out.println("ERROR: dotProduct() wrong value");
     }
 
+    /**
+     * Test method for {@link Vector#lengthSquared()}.
+     */
     @Test
     void lengthSquared() {
         // if (!isZero(v1.lengthSquared() - 14))
@@ -89,6 +102,9 @@ class VectorTest {
         assertTrue(isZero(result-14),"ERROR: lengthSquared() wrong value");
     }
 
+    /**
+     * Test method for {@link Vector#length()}.
+     */
     @Test
     void length() {
         // test length..
@@ -96,6 +112,9 @@ class VectorTest {
             fail("ERROR: length() wrong value");
     }
 
+    /**
+     * Test method for {@link Vector#normalize()}.
+     */
     @Test
     void normalize() {
         //test normalize
@@ -105,6 +124,9 @@ class VectorTest {
             fail("ERROR: normalize() function creates a new vector");
     }
 
+    /**
+     * Test method for {@link Vector#normalized()}.
+     */
     @Test
     void normalized() {
         //test normalized

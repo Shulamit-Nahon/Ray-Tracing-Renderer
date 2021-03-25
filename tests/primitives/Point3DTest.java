@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class Point3DTest {
 
+    // ============ Equivalence Partitions Tests ==============
+
     Point3D p1=new Point3D(1d,0d,1d);
     Point3D p2=new Point3D(1d,0d,-1d);
 

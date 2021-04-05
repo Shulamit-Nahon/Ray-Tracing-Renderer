@@ -1,6 +1,7 @@
 package primitives;
 
 import java.util.Objects;
+
 /**
  * basic Point for RayTracing project in 3D
  */
@@ -38,20 +39,20 @@ public class Point3D {
     /**
      * @return Returns the X-axis values of the point
      */
-    public Coordinate getX() {
-        return x;
+    public double getX() {
+        return x.coord;
     }
     /**
      * @return Returns the Y-axis values of the point
      */
-    public Coordinate getY() {
-        return y;
+    public double getY() {
+        return y.coord;
     }
     /**
      * @return Returns the Z-axis values of the point
      */
-    public Coordinate getZ() {
-        return z;
+    public double getZ() {
+        return z.coord;
     }
 
     /**
@@ -126,5 +127,4 @@ public class Point3D {
                 z.coord - pt2.z.coord
         ));
     }
-
 }

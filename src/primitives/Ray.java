@@ -34,4 +34,8 @@ public class Ray {
     public Vector getDirection() {
         return new Vector(_direction.head);
     }
+
+    public Point3D getTargetPoint(double t) {
+        return _pOrigin.add(_direction.scale(t));
+    }
 }

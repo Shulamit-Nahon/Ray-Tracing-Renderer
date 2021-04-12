@@ -4,6 +4,9 @@ import primitives.*;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 /**
  * Sphere class
  * defined by the main center point and radius of the sphere
@@ -48,6 +51,29 @@ public class Sphere extends RadialGeometry implements Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+     Vector U= cenetr.subtract(ray.getpOrigin());
+     Vector V= ray.getDirection();
+     double tm= U.dotProduct(V);
+     double d= alignZero(Math.sqrt(U.lengthSquared()-tm*tm));//Math.sqrt(radius*radius-)
+        if(d>radius){
+        return null;
+        }
+       double th=alignZero(Math.sqrt(radius*radius-d*d));
+        //if P is on the surface of the sphere
+        if(isZero(th)){
+            return null;
+        }
+        double t1= alignZero(tm+th);
+        double t2= alignZero(tm-th);
+        if(t1>0&&t2>0){
+            return List.of(ray.getTargetPoint(t1),ray.getTargetPoint(t2));
+        }
+        if(t1>0){
+            return List.of(ray.getTargetPoint(t1));
+        }
+        if(t2>0){
+            return List.of(ray.getTargetPoint(t2));
+        }
         return null;
     }
 }

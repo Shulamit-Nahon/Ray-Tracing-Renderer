@@ -10,6 +10,7 @@ public class Geometries implements Intersectable{
 
     List<Intersectable> intersectables = null;
 
+
     public void add(Intersectable... intersectables_){
         for (Intersectable item : intersectables_) {
             this.intersectables.add(item);

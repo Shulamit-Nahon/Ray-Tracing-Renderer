@@ -100,7 +100,7 @@ public class Plane implements Geometry {
         double t = normal.dotProduct(q0.subtract(P0));
         t /= nv;
 
-        Point3D p = P0.add(v.scale(t));
+        Point3D p =ray.getTargetPoint(t);
         return List.of(p);
     }
 }

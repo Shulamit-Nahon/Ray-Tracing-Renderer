@@ -8,11 +8,10 @@ import static primitives.Util.isZero;
 /**
  * Tube class represented by radius and ray
  */
-public class Tube implements Geometry {
+public class Tube extends RadialGeometry implements Geometry {
 
     final Ray axisRay; //Tube ray
 
-    final double radius; //Tube base radius
 
     /**
      * @return The tube ray
@@ -22,20 +21,13 @@ public class Tube implements Geometry {
     }
 
     /**
-     * @return Tube base radius
-     */
-    public double getRadius() {
-        return radius;
-    }
-
-    /**
      * constructor for Tube
      * @param axisRay for The tube ray
      * @param radius for Tube base radius
      */
     public Tube(double radius,Ray axisRay ) {
+        super(radius);
         this.axisRay = axisRay;
-        this.radius = radius;
     }
 
     @Override

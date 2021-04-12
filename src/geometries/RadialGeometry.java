@@ -1,7 +1,7 @@
 package geometries;
 
-public class RadialGeometry {
-    double radius; //radius of  Sphere
+public abstract class RadialGeometry {
+    final protected double radius; //radius of  Sphere
 
     public RadialGeometry(double radius) {
         this.radius = radius;

@@ -8,23 +8,15 @@ import java.util.List;
  * Sphere class
  * defined by the main center point and radius of the sphere
  */
-public class Sphere implements Geometry {
+public class Sphere extends RadialGeometry implements Geometry {
 
     Point3D cenetr; //center point of Sphere
-
-    double radius; //radius of  Sphere
 
     /**
      * @return center point of Sphere
      */
     public Point3D getCenetr() {
         return cenetr;
-    }
-    /**
-     * @return radius of  Sphere
-     */
-    public double getRadius() {
-        return radius;
     }
 
     /**
@@ -33,8 +25,8 @@ public class Sphere implements Geometry {
      * @param radius value for radius of  Sphere
      */
     public Sphere(double radius,Point3D cenetr) {
+        super(radius);
         this.cenetr = cenetr;
-        this.radius = radius;
     }
 
     @Override

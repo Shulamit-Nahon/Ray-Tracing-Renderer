@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface Intersectable {
 
-    List<Point3D> findIntersections(Ray ray);
+   public List<Point3D> findIntersections(Ray ray);
 }

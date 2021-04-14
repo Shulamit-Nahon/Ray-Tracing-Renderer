@@ -4,6 +4,7 @@ import primitives.*;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -87,20 +88,40 @@ public class Plane implements Geometry {
         Point3D P0 = ray.getpOrigin();
         Vector v = ray.getDirection();
 
-        if (q0.equals(P0)) {
-            return List.of(q0);
-        }
-        double nv = normal.dotProduct(v);
+        Vector n = normal;
 
-        //the ray is lying on the plane
-        if (isZero(nv)) {
+        if(q0.equals(P0)){
+            return  null;
+        }
+       // Ray is orthogonal to the plane
+        if(v.normalized().equals(n.normalized())){
+            return null;
+        }
+        Vector P0_Q0 = q0.subtract(P0);
+
+        double mechane = alignZero(n.dotProduct(P0_Q0));
+
+        //
+        if (isZero(mechane)){
             return null;
         }
 
-        double t = normal.dotProduct(q0.subtract(P0));
-        t /= nv;
+        //mone
+        double nv = alignZero(n.dotProduct(v));
 
-        Point3D p =ray.getTargetPoint(t);
-        return List.of(p);
+        // ray is lying in the plane axis
+        if(isZero(nv)){
+            return null;
+        }
+
+        double  t = alignZero(mechane / nv);
+
+        if (t <=0){
+            return  null;
+        }
+        Point3D P = ray.getTargetPoint(t);
+
+        return List.of(P);
     }
+
 }

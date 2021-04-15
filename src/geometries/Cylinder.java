@@ -6,15 +6,6 @@ import java.util.List;
 import static primitives.Util.alignZero;
 
 /**
- *getter for cylinder normal
- * @param point3D init point
- * @return normal of cylinder
- */
-/*
-@Override
-public Vector getNormal(Point3D point3D) {
-        */
-/**
  * A cylinder class inherits from TUBE
  * defined by its height
  */

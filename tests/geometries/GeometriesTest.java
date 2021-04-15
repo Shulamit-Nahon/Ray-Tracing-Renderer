@@ -12,14 +12,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class GeometriesTest {
 
     @Test
-    void add() {
-    }
+    void add() { }
 
+    /**
+     * Test method for {@link geometries.Geometries#findIntersections(Ray)}.
+     */
     @Test
     void findIntersections() {
 
         Geometries g=new Geometries();
         Ray ray=new Ray(new Point3D(0d,4d,4d),new Vector(-1d,0.33d,0d));
+
         //Check if the body collection is empty (BVA), then need to return null
         //Empty body collection (BVA)
         assertEquals(null,g.findIntersections(ray),"ERROR: empty Geometries do not have Intersections ");
@@ -52,7 +55,5 @@ class GeometriesTest {
         g1.add(intersectable2);
         // All shapes are cut (BVA)
         assertEquals(3,g.findIntersections(ray).size(),"ERROR: aAll shapes are cut with the ray, 3 points in total ");
-
-
     }
 }

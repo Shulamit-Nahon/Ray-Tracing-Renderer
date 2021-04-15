@@ -6,6 +6,10 @@ import primitives.Ray;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A Geometries class
+ * defined by its a list intersectables
+ */
 public class Geometries implements Intersectable{
 
     List<Intersectable> intersectables = null;
@@ -16,6 +20,7 @@ public class Geometries implements Intersectable{
             this.intersectables.add(item);
         }
     }
+
 
     public Geometries() {
         intersectables= new LinkedList<>();

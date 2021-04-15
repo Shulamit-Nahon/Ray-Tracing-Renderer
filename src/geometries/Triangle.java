@@ -22,6 +22,10 @@ public class Triangle extends Polygon{
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+        //check if there is intersection with the plane
+        if(this.plane.findIntersections(ray)==null){
+            return null;
+        }
        Vector v=ray.getDirection();
        Vector v1= (this.vertices.get(0)).subtract(ray.getpOrigin());//𝑣1 = 𝑃1 − 𝑃0
        Vector v2= (this.vertices.get(1)).subtract(ray.getpOrigin());//𝑣2 = 𝑃2 − 𝑃0
@@ -30,11 +34,9 @@ public class Triangle extends Polygon{
        Vector N2= v2.crossProduct(v3).normalized();//𝑁2 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣2 × 𝑣3
        Vector N3= v3.crossProduct(v1).normalized();//𝑁3 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣3 × 𝑣1
         //The point is inside the triangle if all 𝒗 ∙ 𝑵𝒊 have the same sign (+/-)
-        if(v.dotProduct(N1)<0&&v.dotProduct(N2)<0&&v.dotProduct(N3)<0){
+        if((v.dotProduct(N1)<0&&v.dotProduct(N2)<0&&v.dotProduct(N3)<0)||(v.dotProduct(N1)>0&&v.dotProduct(N2)>0&&v.dotProduct(N3)>0)){
             return  this.plane.findIntersections(ray);
         }
-
-
 
         return null;
     }

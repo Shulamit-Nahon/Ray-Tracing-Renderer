@@ -5,7 +5,7 @@ import static primitives.Point3D.ZERO;
 /**
  * Vector in 3D for RayTracing
  */
-public class Vector {
+public class Vector extends java.util.Vector {
 
     protected Point3D head;
 

@@ -2,6 +2,9 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -84,4 +87,29 @@ public class PolygonTest {
         assertEquals( new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)),"Bad normal to trinagle");
     }
 
+    @Test
+    void findIntersections() {
+       Polygon polygon=new Polygon(new Point3D(-4d,0d,0d),new Point3D(-3d,0d,0d),new Point3D(0d,-4d,0d),new Point3D(0d,-6d,0d));
+        // ============ Equivalence Partitions Tests ==============
+
+        //TC01: Ray's line is inside the polygon
+        Ray ray=new Ray(new Point3D(0d,0d,1d),new Vector(-0.61,-1.6,-0.5));
+        assertEquals(List.of(new Point3D(-1.22d,-3.2d,0d)),polygon.findIntersections(ray),"ERROR: ray cut the polygon at (-1,-3.71,0) point");
+        //TC02: Ray's line is outside the polygon against the edge
+        Ray ray1=new Ray(new Point3D(0d,0d,3d),new Vector(-0.2,-0.46,-1));
+        assertEquals(null,polygon.findIntersections(ray1),"ERROR:ray outside the polygon against edge ");
+        //TC03: Ray's line is outside the polygon against the vertex
+        Ray ray2=new Ray(new Point3D(0d,0d,4d),new Vector(-1,0,-2));
+        assertEquals(null,polygon.findIntersections(ray2),"ERROR: ray outside the polygon against vertex");
+
+        //BVA: Three cases (the ray begins
+        //"before" the plane)
+        //• On edge
+        //• In vertex
+        //• On edge's continuation
+
+        //// =============== Boundary Values Tests ==================
+        //
+        //        // **** Group: Ray's line begins before the plane
+    }
 }

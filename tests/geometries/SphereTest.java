@@ -115,11 +115,11 @@ class SphereTest {
 
 
         // TC16: Ray starts at the center (1 points)
-//        assertEquals(1,
-//                sphere1.findIntersections(new Ray(
-//                        new Point3D(0, 1.5, 0),
-//                        new Vector(0.5, 1.5, 0))).size(),
-//                "ERROR - TC16: Ray's line starts at the center (goes through the center)");
+        assertEquals(1,
+                sphere1.findIntersections(new Ray(
+                        new Point3D(0, 1.5, 0),
+                        new Vector(0.5, 1.5, 0))).size(),
+                "ERROR - TC16: Ray's line starts at the center (goes through the center)");
 
 
         // TC17: Ray starts at sphere and goes outside (0 points)

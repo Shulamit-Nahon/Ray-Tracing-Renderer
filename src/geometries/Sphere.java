@@ -51,6 +51,11 @@ public class Sphere extends RadialGeometry implements Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+
+     if(ray.getpOrigin().equals(cenetr))   {
+         return List.of(ray.getTargetPoint(radius));
+     }
+
      Vector U= cenetr.subtract(ray.getpOrigin());
      Vector V= ray.getDirection();
      double tm= U.dotProduct(V);

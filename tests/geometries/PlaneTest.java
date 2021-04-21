@@ -37,7 +37,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(Ray)}.
      */
     @Test
-    void findIntersections() {
+    void testFindIntersections() {
 
         Point3D q0 = new Point3D(-2d, 0d, 0d);
         Plane plane = new Plane(q0, new Vector(0, 1, 0));

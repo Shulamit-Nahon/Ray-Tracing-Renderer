@@ -69,6 +69,7 @@ public class Vector extends java.util.Vector {
    }
 
     /**
+     * creates new vector by the 3 new values from adding the 2 values of each vector
      *
      * @param vector Vector
      * @return new Vector (u+v)
@@ -82,6 +83,7 @@ public class Vector extends java.util.Vector {
     }
 
     /**
+     * creates new vector by the 3 new values from subtraction of the 2 values of each vector
      *
      * @param  vector
      * @return new Vector(u-v)
@@ -153,7 +155,6 @@ public class Vector extends java.util.Vector {
     }
 
     /**
-     *
      * @return length Squared
      */
     public double lengthSquared() {

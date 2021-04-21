@@ -83,6 +83,11 @@ public class Plane implements Geometry {
         return normal;
     }
 
+    /**
+     * ////////////////////////
+     * @param ray
+     * @return
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         Point3D P0 = ray.getpOrigin();

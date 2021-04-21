@@ -33,21 +33,24 @@ public class PolygonTest {
             new Polygon(new Point3D(0, 0, 1), new Point3D(0, 1, 0),
                     new Point3D(1, 0, 0), new Point3D(-1, 1, 1));
             fail("Constructed a polygon with wrong order of vertices");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
         // TC03: Not in the same plane
         try {
             new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0),
                     new Point3D(0, 1, 0), new Point3D(0, 2, 2));
             fail("Constructed a polygon with vertices that are not in the same plane");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
         // TC04: Concave quadrangular
         try {
             new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0),
                     new Point3D(0, 1, 0), new Point3D(0.5, 0.25, 0.5));
             fail("Constructed a concave polygon");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
         // =============== Boundary Values Tests ==================
 
@@ -56,21 +59,24 @@ public class PolygonTest {
             new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0),
                     new Point3D(0, 1, 0), new Point3D(0, 0.5, 0.5));
             fail("Constructed a polygon with vertix on a side");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
         // TC11: Last point = first point
         try {
             new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0),
                     new Point3D(0, 1, 0), new Point3D(0, 0, 1));
             fail("Constructed a polygon with vertice on a side");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
         // TC12: Colocated points
         try {
             new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0),
                     new Point3D(0, 1, 0), new Point3D(0, 1, 0));
             fail("Constructed a polygon with vertice on a side");
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
 
     }
 
@@ -84,42 +90,42 @@ public class PolygonTest {
         Polygon pl = new Polygon(new Point3D(0, 0, 1), new Point3D(1, 0, 0), new Point3D(0, 1, 0),
                 new Point3D(-1, 1, 1));
         double sqrt3 = Math.sqrt(1d / 3);
-        assertEquals( new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)),"Bad normal to trinagle");
+        assertEquals(new Vector(sqrt3, sqrt3, sqrt3), pl.getNormal(new Point3D(0, 0, 1)), "Bad normal to trinagle");
     }
 
     /**
      * Test method for {@link geometries.Polygon#findIntersections(Ray)}.
      */
     @Test
-    void findIntersections() {
-       Polygon polygon=new Polygon(new Point3D(-4d,0d,0d),new Point3D(-3d,0d,0d),new Point3D(0d,-4d,0d),new Point3D(0d,-6d,0d));
+    void testFindIntersections() {
+        Polygon polygon = new Polygon(new Point3D(-4d, 0d, 0d), new Point3D(-3d, 0d, 0d), new Point3D(0d, -4d, 0d), new Point3D(0d, -6d, 0d));
         // ============ Equivalence Partitions Tests ==============
 
         //TC01: Ray's line is inside the polygon
-        Ray ray=new Ray(new Point3D(0d,0d,1d),new Vector(-0.61,-1.6,-0.5));
-        assertEquals(List.of(new Point3D(-1.22d,-3.2d,0d)),polygon.findIntersections(ray),"ERROR: ray cut the polygon at (-1,-3.71,0) point");
+        Ray ray = new Ray(new Point3D(0d, 0d, 1d), new Vector(-0.61, -1.6, -0.5));
+        assertEquals(List.of(new Point3D(-1.22d, -3.2d, 0d)), polygon.findIntersections(ray), "ERROR: ray cut the polygon at (-1,-3.71,0) point");
         //TC02: Ray's line is outside the polygon against the edge
-        Ray ray1=new Ray(new Point3D(0d,0d,3d),new Vector(-0.2,-0.46,-1));
-        assertEquals(null,polygon.findIntersections(ray1),"ERROR:ray outside the polygon against edge ");
+        Ray ray1 = new Ray(new Point3D(0d, 0d, 3d), new Vector(-0.2, -0.46, -1));
+        assertEquals(null, polygon.findIntersections(ray1), "ERROR:ray outside the polygon against edge ");
         //TC03: Ray's line is outside the polygon against the vertex
-        Ray ray2=new Ray(new Point3D(0d,0d,4d),new Vector(-1,0,-2));
-        assertEquals(null,polygon.findIntersections(ray2),"ERROR: ray outside the polygon against vertex");
+        Ray ray2 = new Ray(new Point3D(0d, 0d, 4d), new Vector(-1, 0, -2));
+        assertEquals(null, polygon.findIntersections(ray2), "ERROR: ray outside the polygon against vertex");
 
 
         //// =============== Boundary Values Tests ==================
         //
         //        // **** Group: Ray's line begins before the plane
         ////TC11: On edge
-        Ray ray3=new Ray(new Point3D(0d,0d,1d),new Vector(-0.75,-1,-0.5));
-        assertEquals(null,polygon.findIntersections(ray3),
+        Ray ray3 = new Ray(new Point3D(0d, 0d, 1d), new Vector(-0.75, -1, -0.5));
+        assertEquals(null, polygon.findIntersections(ray3),
                 "ERROR: - TC11: Ray's line begins before the plane on edge ");
         ////TC12: In vertex
-        Ray ray4=new Ray(new Point3D(0d,0d,2d),new Vector(-2,0,-1.33));
-        assertEquals(null,polygon.findIntersections(ray4),
+        Ray ray4 = new Ray(new Point3D(0d, 0d, 2d), new Vector(-2, 0, -1.33));
+        assertEquals(null, polygon.findIntersections(ray4),
                 "ERROR  - TC12: Ray's line begins before the plane in vertex");
         ////TC13: On edge's continuation
-        Ray ray5=new Ray(new Point3D(0d,0d,3d),new Vector(0.33,-3,1.75));
-        assertEquals(null,polygon.findIntersections(ray5),"ERROR - TC13: Ray's line begins before the plane on edge's continuation");
+        Ray ray5 = new Ray(new Point3D(0d, 0d, 3d), new Vector(0.33, -3, 1.75));
+        assertEquals(null, polygon.findIntersections(ray5), "ERROR - TC13: Ray's line begins before the plane on edge's continuation");
 
     }
 }

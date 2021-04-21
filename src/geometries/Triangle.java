@@ -23,6 +23,12 @@ public class Triangle extends Polygon {
         super(p1, p2, p3);
     }
 
+    /**
+     * /////////////////////////////
+     *
+     * @param ray
+     * @return
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         //check if there is intersection with the plane

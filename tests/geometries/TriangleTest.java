@@ -17,7 +17,7 @@ class TriangleTest {
      * Test method for {@link geometries.Triangle#getNormal(primitives.Point3D)}.
      */
     @Test
-    void testNormal() {
+    void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
         Triangle tr = new Triangle(new Point3D(0, 0, 1), new Point3D(1, 1, 1), new Point3D(1, 0, 1));
@@ -28,7 +28,7 @@ class TriangleTest {
      * Test method for {@link geometries.Triangle#findIntersections(Ray)}.
      */
     @Test
-    void findIntersections() {
+    void testFindIntersections() {
 
         Triangle triangle = new Triangle(new Point3D(-3d, 0d, 0d), new Point3D(-1d, 0d, 0d), new Point3D(-4d, 5d, 0d));
 

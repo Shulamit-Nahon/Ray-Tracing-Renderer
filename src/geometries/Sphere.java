@@ -40,6 +40,12 @@ public class Sphere extends RadialGeometry implements Geometry {
                 '}';
     }
 
+    /**
+     * receives point and calculates the normal
+     *
+     * @param point Point3D
+     * @return the normalize vector
+     */
     @Override
     public Vector getNormal(Point3D point) {
         
@@ -49,6 +55,12 @@ public class Sphere extends RadialGeometry implements Geometry {
         return v.normalize();
     }
 
+    /**
+     * //////////////////////
+     *
+     * @param ray
+     * @return
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
 

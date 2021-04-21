@@ -35,6 +35,12 @@ public class Ray {
         return new Vector(_direction.head);
     }
 
+    /**
+     * Function for returning the target point of the ray on the axis
+     *
+     * @param t
+     * @return
+     */
     public Point3D getTargetPoint(double t) {
         return _pOrigin.add(_direction.scale(t));
     }

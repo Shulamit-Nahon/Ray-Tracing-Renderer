@@ -22,7 +22,7 @@ class VectorTest {
      * Test method for {@link primitives.Vector#add(Vector)}.
      */
     @Test
-    void add() {
+    void testAdd() {
         //test add
         Vector u=v1.add(v2);
         assertEquals(u,new Vector(1d,5d,1d),"ERROR: Vector + Vector does not work correctly");
@@ -35,7 +35,7 @@ class VectorTest {
      * Test method for {@link primitives.Vector#substract(Vector)}.
      */
     @Test
-    void substract() {
+    void testSubstract() {
         //test substract
         Vector u=v1.substract(v2);
         assertEquals(u,new Vector(1d,-1d,5d),"ERROR: Vector - Vector does not work correctly");
@@ -46,7 +46,7 @@ class VectorTest {
      * Test method for {@link primitives.Vector#scale(double)}.
      */
     @Test
-    void scale() {
+    void testScale() {
         //test scale
         Vector u=v1.scale(2);
         assertEquals(u,new Vector(2d,4d,6d),"ERROR: Vector * scale does not work correctly");
@@ -56,7 +56,7 @@ class VectorTest {
      * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
      */
     @Test
-    public void CrossProduct() {
+    public void testCrossProduct() {
         // ============ Equivalence Partitions Tests ==============
         Vector vr = v1.crossProduct(v2);
 
@@ -83,7 +83,7 @@ class VectorTest {
      * Test method for {@link primitives.Vector#dotProduct(Vector)}.
      */
     @Test
-    void dotProduct() {
+    void testDotProduct() {
         // test Dot-Product
         if (!isZero(v1.dotProduct(v2)))
             out.println("ERROR: dotProduct() for orthogonal vectors is not zero");
@@ -95,7 +95,7 @@ class VectorTest {
      * Test method for {@link Vector#lengthSquared()}.
      */
     @Test
-    void lengthSquared() {
+    void testLengthSquared() {
         // if (!isZero(v1.lengthSquared() - 14))
         //fail("ERROR: lengthSquared() wrong value");
         double result=v1.lengthSquared();
@@ -106,7 +106,7 @@ class VectorTest {
      * Test method for {@link Vector#length()}.
      */
     @Test
-    void length() {
+    void testLength() {
         // test length..
         if (!isZero(new Vector(0, 3, 4).length() - 5))
             fail("ERROR: length() wrong value");
@@ -116,7 +116,7 @@ class VectorTest {
      * Test method for {@link Vector#normalize()}.
      */
     @Test
-    void normalize() {
+    void testNormalize() {
         //test normalize
         Vector vCopy = new Vector(v1.getHead());
         Vector vCopyNormalize = vCopy.normalize();
@@ -128,7 +128,7 @@ class VectorTest {
      * Test method for {@link Vector#normalized()}.
      */
     @Test
-    void normalized() {
+    void testNormalized() {
         //test normalized
         Vector u = v1.normalized();
         if (u == v1)

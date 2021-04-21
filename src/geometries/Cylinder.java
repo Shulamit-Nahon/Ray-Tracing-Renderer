@@ -84,6 +84,7 @@ public class Cylinder extends Tube {
         return check.normalize();
     }
 
+
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return null;

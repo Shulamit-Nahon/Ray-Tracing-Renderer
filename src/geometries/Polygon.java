@@ -75,13 +75,22 @@ public class Polygon implements Geometry {
         }
     }
 
+    /**
+     *
+     * @param point Point3D
+     * @return
+     */
     @Override
     public Vector getNormal(Point3D point) {
 
         return plane.getNormal();
     }
 
-
+    /**
+     * //////////////////////
+     * @param ray
+     * @return
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         //check if there is intersection with the plane

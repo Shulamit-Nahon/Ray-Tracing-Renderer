@@ -2,6 +2,7 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ class SphereTest {
      * Test method for {@link geometries.Sphere#getNormal(primitives.Point3D)}.
      */
     @Test
-    void getNormal() {
+    void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
         Sphere sphere = new Sphere(12.6, new Point3D(1d, 2d, -6d));
@@ -26,7 +27,7 @@ class SphereTest {
      * Test method for {@link geometries.Sphere#findIntersections(Ray)}.
      */
     @Test
-    void findIntersections() {
+    void testFindIntersections() {
         Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
         Sphere sphere1 = new Sphere(1d, new Point3D(0, 1.5, 0));
 
@@ -49,7 +50,7 @@ class SphereTest {
         assertEquals(2, result.size(),
                 "ERROR - TC02: Wrong number of points");
 
-            result = List.of(result.get(1), result.get(0));
+        result = List.of(result.get(1), result.get(0));
 
         assertEquals(List.of(p1, p2), result, "Ray crosses sphere");
 

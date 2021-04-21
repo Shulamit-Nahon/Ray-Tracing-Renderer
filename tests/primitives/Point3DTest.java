@@ -18,7 +18,7 @@ class Point3DTest {
      * Test method for {@link primitives.Point3D#subtract(Point3D)}.
      */
     @Test
-    void subtract() {
+    void testSubtract() {
         assertEquals(new Vector(new Point3D(0d,0d,2d)),p1.subtract(p2),
                 "ERROR: The function subtract between two point is incorrect");
     }
@@ -27,7 +27,7 @@ class Point3DTest {
      * Test method for {@link primitives.Point3D#distanceSquared(Point3D)}.
      */
     @Test
-    void distanceSquared() {
+    void testDistanceSquared() {
         assertEquals(4d,p1.distanceSquared(p2),
                 "ERROR: The function distanceSquared is incorrect ");
     }
@@ -36,7 +36,7 @@ class Point3DTest {
      * Test method for {@link primitives.Point3D#distance(Point3D)}.
      */
     @Test
-    void distance() {
+    void testDistance() {
         assertEquals(2d,p1.distance(p2),
                 "ERROR: The function distance is incorrect ");
     }
@@ -45,7 +45,7 @@ class Point3DTest {
      * Test method for {@link primitives.Point3D#add(Vector)}.
      */
     @Test
-    void add() {
+    void testAdd() {
         assertEquals(new Point3D(2d,0d,0d),p1.add(new Vector(new Point3D(1d,0d,-1d))),
                 "ERROR: The function add is incorrect");
     }

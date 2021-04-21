@@ -38,6 +38,11 @@ public class Tube extends RadialGeometry implements Geometry {
                 '}';
     }
 
+    /**
+     * /////////////////
+     * @param p
+     * @return
+     */
     @Override
     public Vector getNormal(Point3D p)
     {

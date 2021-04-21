@@ -14,23 +14,38 @@ public class Geometries implements Intersectable{
 
     List<Intersectable> intersectables = null;
 
-
+    /**
+     *
+     * @param intersectables_
+     */
     public void add(Intersectable... intersectables_){
         for (Intersectable item : intersectables_) {
             this.intersectables.add(item);
         }
     }
 
-
+    /**
+     * constructor that initialize the intersections list
+     */
     public Geometries() {
         intersectables= new LinkedList<>();
     }
 
+    /**
+     *
+     * @param intersectables
+     */
     public Geometries(Intersectable... intersectables) {
         this.intersectables = new LinkedList<>();
             add(intersectables);
     }
 
+    /**
+     * //////////////////////////////////
+     *
+     * @param ray
+     * @return the intersections list
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         List<Point3D> result = null;

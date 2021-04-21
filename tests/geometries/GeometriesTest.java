@@ -20,6 +20,7 @@ class GeometriesTest {
     @Test
     void findIntersections() {
 
+
         Geometries g=new Geometries();
         Ray ray=new Ray(new Point3D(0d,4d,4d),new Vector(-1d,0.33d,0d));
 

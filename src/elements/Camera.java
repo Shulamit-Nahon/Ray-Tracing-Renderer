@@ -42,7 +42,7 @@ public class Camera {
     /**
      * borrowing from builder pattern
      * @param width
-     * @param height
+     * @param height  --
      * @return
      */
     public Camera setViewPlaneSize(double width,double height){

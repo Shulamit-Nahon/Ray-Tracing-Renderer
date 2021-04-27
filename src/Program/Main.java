@@ -8,8 +8,8 @@ import static primitives.Util.*;
 /**
  * Test program for the 1st stage
  *
- * @author      Shulamit Nahon 323782854 shnahon@g.jct.ac.il
- *              Lea Haimovich 324250787 haimovit@g.jct.ac.il
+ * @author  Shulamit Nahon 323782854 shnahon@g.jct.ac.il
+ *          Lea Haimovich 324250787 haimovit@g.jct.ac.il
  */
 public final class Main {
 

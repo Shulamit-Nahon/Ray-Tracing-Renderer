@@ -33,6 +33,7 @@ class CylinderTests {
                 "ERROR - TC02: the point is on the shell. Bad normal to cylinder");
 
         // =============== Boundary Values Tests ==================
+
         // TC03: The normal is bad.
         Point3D point3D3 = new Point3D(1, 0, 0);
         assertEquals(new Vector(new Point3D(0, 0, 1)), cylinder.getNormal(point3D),

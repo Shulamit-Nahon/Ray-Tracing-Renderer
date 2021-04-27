@@ -123,5 +123,4 @@ public class CameraIntegretionsTest {
         assertCountIntersections(camera, new Triangle(new Point3D(1, 1, -2), new Point3D(-1, 1, -2), new Point3D(0, -20, -2)), 2);
 
     }
-
 }

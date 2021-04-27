@@ -1,7 +1,9 @@
 package geometries;
 
 import java.util.List;
+
 import primitives.*;
+
 import static primitives.Util.*;
 
 /**
@@ -76,7 +78,6 @@ public class Polygon implements Geometry {
     }
 
     /**
-     *
      * @param point Point3D
      * @return
      */
@@ -87,37 +88,39 @@ public class Polygon implements Geometry {
     }
 
     /**
-     * //////////////////////
+     * finds intersections between the ray and the polygon
+     *
      * @param ray
      * @return
      */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         //check if there is intersection with the plane
-        if(this.plane.findIntersections(ray)==null){
-            return null;}
-        Vector v=ray.getDirection();
-        int i=vertices.size();
-        int count1=0;//count for 𝒗 ∙ 𝑵𝒊  with tha sing -
-        int count2=0;//count for 𝒗 ∙ 𝑵𝒊  with tha sing +
-        ////The point is inside the polygon if all 𝒗 ∙ 𝑵𝒊 have the same sign (+/-)
+        if (this.plane.findIntersections(ray) == null) {
+            return null;
+        }
+        Vector v = ray.getDirection();
+        int i = vertices.size();
+        int count1 = 0; //count for 𝒗 ∙ 𝑵𝒊  with tha sing -
+        int count2 = 0; //count for 𝒗 ∙ 𝑵𝒊  with tha sing +
+        //The point is inside the polygon if all 𝒗 ∙ 𝑵𝒊 have the same sign (+/-)
         Vector v2 = null;
-       while(!isZero(i)&&!(i==1)){
-           int j=vertices.size()-i;
-           Vector v1= (this.vertices.get(j)).subtract(ray.getpOrigin());//𝑣1 = 𝑃i − 𝑃0
-            v2= (this.vertices.get(j+1)).subtract(ray.getpOrigin());//𝑣2 = 𝑃i+1 − 𝑃0
-           Vector N1= v1.crossProduct(v2).normalized();//𝑁1 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣1 × 𝑣2
-           if(v.dotProduct(N1)<0)count1++;
-           if(v.dotProduct(N1)>0)count2++;
-           i--;
-       }
-       Vector v1= (this.vertices.get(0)).subtract(ray.getpOrigin());//𝑣1 = 𝑃1 − 𝑃0
-       Vector Ni=v2.crossProduct(v1).normalized();
-            if(v.dotProduct(Ni)<0)count1++;
-            if(v.dotProduct(Ni)>0)count2++;
-            if((count1==vertices.size())||(count2==vertices.size())){
-                return this.plane.findIntersections(ray);
-            }
+        while (!isZero(i) && !(i == 1)) {
+            int j = vertices.size() - i;
+            Vector v1 = (this.vertices.get(j)).subtract(ray.getpOrigin());  //𝑣1 = 𝑃i − 𝑃0
+            v2 = (this.vertices.get(j + 1)).subtract(ray.getpOrigin()); //𝑣2 = 𝑃i+1 − 𝑃0
+            Vector N1 = v1.crossProduct(v2).normalized();   //𝑁1 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣1 × 𝑣2
+            if (v.dotProduct(N1) < 0) count1++;
+            if (v.dotProduct(N1) > 0) count2++;
+            i--;
+        }
+        Vector v1 = (this.vertices.get(0)).subtract(ray.getpOrigin());  //𝑣1 = 𝑃1 − 𝑃0
+        Vector Ni = v2.crossProduct(v1).normalized();
+        if (v.dotProduct(Ni) < 0) count1++;
+        if (v.dotProduct(Ni) > 0) count2++;
+        if ((count1 == vertices.size()) || (count2 == vertices.size())) {
+            return this.plane.findIntersections(ray);
+        }
         return null;
 
     }

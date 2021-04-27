@@ -24,10 +24,11 @@ public class Sphere extends RadialGeometry implements Geometry {
 
     /**
      * constructor for sphere
-     * @param cenetr  Point3D for center point of Sphere
+     *
+     * @param cenetr Point3D for center point of Sphere
      * @param radius value for radius of  Sphere
      */
-    public Sphere(double radius,Point3D cenetr) {
+    public Sphere(double radius, Point3D cenetr) {
         super(radius);
         this.cenetr = cenetr;
     }
@@ -48,15 +49,15 @@ public class Sphere extends RadialGeometry implements Geometry {
      */
     @Override
     public Vector getNormal(Point3D point) {
-        
+
         if (point.equals(cenetr))
             throw new IllegalArgumentException("ERROR: point equals center");
-        Vector v= point.subtract(cenetr);
+        Vector v = point.subtract(cenetr);
         return v.normalize();
     }
 
     /**
-     * //////////////////////
+     * finds intersections between the ray and the sphere
      *
      * @param ray
      * @return
@@ -64,31 +65,31 @@ public class Sphere extends RadialGeometry implements Geometry {
     @Override
     public List<Point3D> findIntersections(Ray ray) {
 
-     if(ray.getpOrigin().equals(cenetr))   {
-         return List.of(ray.getTargetPoint(radius));
-     }
-
-     Vector U= cenetr.subtract(ray.getpOrigin());
-     Vector V= ray.getDirection();
-     double tm= U.dotProduct(V);
-     double d= alignZero(Math.sqrt(U.lengthSquared()-tm*tm));//Math.sqrt(radius*radius-)
-        if(d>radius){
-        return null;
+        if (ray.getpOrigin().equals(cenetr)) {
+            return List.of(ray.getTargetPoint(radius));
         }
-       double th=alignZero(Math.sqrt(radius*radius-d*d));
-        //if P is on the surface of the sphere
-        if(isZero(th)){
+
+        Vector U = cenetr.subtract(ray.getpOrigin());
+        Vector V = ray.getDirection();
+        double tm = U.dotProduct(V);
+        double d = alignZero(Math.sqrt(U.lengthSquared() - tm * tm));//Math.sqrt(radius*radius-)
+        if (d > radius) {
             return null;
         }
-        double t1= alignZero(tm+th);
-        double t2= alignZero(tm-th);
-        if(t1>0&&t2>0){
-            return List.of(ray.getTargetPoint(t1),ray.getTargetPoint(t2));
+        double th = alignZero(Math.sqrt(radius * radius - d * d));
+        //if P is on the surface of the sphere
+        if (isZero(th)) {
+            return null;
         }
-        if(t1>0){
+        double t1 = alignZero(tm + th);
+        double t2 = alignZero(tm - th);
+        if (t1 > 0 && t2 > 0) {
+            return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2));
+        }
+        if (t1 > 0) {
             return List.of(ray.getTargetPoint(t1));
         }
-        if(t2>0){
+        if (t2 > 0) {
             return List.of(ray.getTargetPoint(t2));
         }
         return null;

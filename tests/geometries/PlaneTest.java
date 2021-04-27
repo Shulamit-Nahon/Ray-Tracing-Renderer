@@ -21,6 +21,7 @@ class PlaneTest {
     void testGetNormal() {
 
         // ============ Equivalence Partitions Tests ==============
+
         // TC01: There is a simple single test here
         try {
             Plane plane = new Plane(

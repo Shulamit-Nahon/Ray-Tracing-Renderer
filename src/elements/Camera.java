@@ -6,57 +6,88 @@ import primitives.Vector;
 
 import static primitives.Util.isZero;
 
+/**
+ * A camera class
+ * defined by his p0, vT0, vUp, vRight
+ */
 public class Camera {
     final Point3D _p0;
     final Vector _vTo;
     final Vector _vUp;
     final Vector _vRight;
 
+    /**
+     * @return the p0 point
+     */
     public Point3D getP0() {
         return _p0;
     }
 
+    /**
+     * @return vT0
+     */
     public Vector getvTo() {
         return _vTo;
     }
 
+    /**
+     * @return vUp
+     */
     public Vector getvUp() {
         return _vUp;
     }
 
-    private  double _distance;
-    private  double _width;
-    private  double _height;
+    private double _distance;
+    private double _width;
+    private double _height;
 
-
+    /**
+     * constructor
+     * @param p0
+     * @param vTo
+     * @param vUp
+     */
     public Camera(Point3D p0, Vector vTo, Vector vUp) {
         _p0 = p0;
         _vTo = vTo.normalized();
         _vUp = vUp.normalized();
-        if(!isZero(_vTo.dotProduct(_vUp))){
+        if (!isZero(_vTo.dotProduct(_vUp))) {
             throw new IllegalArgumentException("vUp are orthogonal to vTo");
         }
-        _vRight=_vTo.crossProduct(_vUp);
+        _vRight = _vTo.crossProduct(_vUp);
     }
 
     /**
      * borrowing from builder pattern
+     *
      * @param width
-     * @param height  --
+     * @param height
      * @return
      */
-    public Camera setViewPlaneSize(double width,double height){
-        _width=width;
-        _height=height;
+    public Camera setViewPlaneSize(double width, double height) {
+        _width = width;
+        _height = height;
         return this;
     }
 
-    public Camera setDistance(double distance){
-        _distance=distance;
+    /**
+     * @param distance
+     * @return the camera with the current distance
+     */
+    public Camera setDistance(double distance) {
+        _distance = distance;
         return this;
     }
 
-    // constructing a ray passing through pixel(i,j) of the view plane
+    /**
+     * constructing a ray passing through pixel(i,j) of the view plane
+     *
+     * @param nX
+     * @param nY
+     * @param j
+     * @param i
+     * @return
+     */
     public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
         Point3D Pc = _p0.add(_vTo.scale(_distance));
 

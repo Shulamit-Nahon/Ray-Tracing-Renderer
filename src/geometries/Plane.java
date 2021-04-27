@@ -50,10 +50,7 @@ public class Plane implements Geometry {
     /**
      * @return point in the space of the plain
      */
-    public Point3D getQ0() {
-
-        return q0;
-    }
+    public Point3D getQ0() { return q0; }
 
     /**
      * getter of the normal vector filed
@@ -84,7 +81,8 @@ public class Plane implements Geometry {
     }
 
     /**
-     * ////////////////////////
+     * finds intersections between the ray and the plane
+     *
      * @param ray
      * @return
      */
@@ -95,19 +93,18 @@ public class Plane implements Geometry {
 
         Vector n = normal;
 
-        if(q0.equals(P0)){
-            return  null;
+        if (q0.equals(P0)) {
+            return null;
         }
-       // Ray is orthogonal to the plane
-        if(v.normalized().equals(n.normalized())){
+        // Ray is orthogonal to the plane
+        if (v.normalized().equals(n.normalized())) {
             return null;
         }
         Vector P0_Q0 = q0.subtract(P0);
 
         double mechane = alignZero(n.dotProduct(P0_Q0));
 
-        //
-        if (isZero(mechane)){
+        if (isZero(mechane)) {
             return null;
         }
 
@@ -115,14 +112,14 @@ public class Plane implements Geometry {
         double nv = alignZero(n.dotProduct(v));
 
         // ray is lying in the plane axis
-        if(isZero(nv)){
+        if (isZero(nv)) {
             return null;
         }
 
-        double  t = alignZero(mechane / nv);
+        double t = alignZero(mechane / nv);
 
-        if (t <=0){
-            return  null;
+        if (t <= 0) {
+            return null;
         }
         Point3D P = ray.getTargetPoint(t);
 

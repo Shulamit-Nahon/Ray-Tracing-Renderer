@@ -165,6 +165,7 @@ class SphereTest {
 
 
         // **** Group: Special cases
+
         // TC22: Ray's line is outside, ray is orthogonal to ray start to sphere's center line
         assertEquals(null,
                 sphere1.findIntersections(new Ray(

@@ -1,6 +1,7 @@
 package geometries;
 
 public abstract class RadialGeometry {
+
     final protected double radius; //radius of  Sphere
 
     public RadialGeometry(double radius) {

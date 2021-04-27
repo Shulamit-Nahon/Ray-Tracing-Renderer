@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+
 import java.util.List;
 
 import static primitives.Util.isZero;
@@ -22,10 +23,11 @@ public class Tube extends RadialGeometry implements Geometry {
 
     /**
      * constructor for Tube
+     *
      * @param axisRay for The tube ray
-     * @param radius for Tube base radius
+     * @param radius  for Tube base radius
      */
-    public Tube(double radius,Ray axisRay ) {
+    public Tube(double radius, Ray axisRay) {
         super(radius);
         this.axisRay = axisRay;
     }
@@ -39,21 +41,21 @@ public class Tube extends RadialGeometry implements Geometry {
     }
 
     /**
-     * /////////////////
+     * returns the tube normal
+     *
      * @param p
      * @return
      */
     @Override
-    public Vector getNormal(Point3D p)
-    {
-        Point3D p0=axisRay.getpOrigin();
-        Vector v= axisRay.getDirection();
-        Vector p0_p=p.subtract(p0);
-        double t= v.dotProduct(p0_p);
-        if(isZero(t))
+    public Vector getNormal(Point3D p) {
+        Point3D p0 = axisRay.getpOrigin();
+        Vector v = axisRay.getDirection();
+        Vector p0_p = p.subtract(p0);
+        double t = v.dotProduct(p0_p);
+        if (isZero(t))
             return p0_p.normalize();
-        Point3D O= p0.add(v.scale(t));
-        Vector n= p.subtract(O);
+        Point3D O = p0.add(v.scale(t));
+        Vector n = p.subtract(O);
         return n.normalize();
     }
 

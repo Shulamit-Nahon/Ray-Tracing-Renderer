@@ -113,17 +113,18 @@ public class PolygonTest {
 
 
         //// =============== Boundary Values Tests ==================
-        //
-        //        // **** Group: Ray's line begins before the plane
-        ////TC11: On edge
+
+        // **** Group: Ray's line begins before the plane
+
+        //TC11: On edge
         Ray ray3 = new Ray(new Point3D(0d, 0d, 1d), new Vector(-0.75, -1, -0.5));
         assertEquals(null, polygon.findIntersections(ray3),
                 "ERROR: - TC11: Ray's line begins before the plane on edge ");
-        ////TC12: In vertex
+        //TC12: In vertex
         Ray ray4 = new Ray(new Point3D(0d, 0d, 2d), new Vector(-2, 0, -1.33));
         assertEquals(null, polygon.findIntersections(ray4),
                 "ERROR  - TC12: Ray's line begins before the plane in vertex");
-        ////TC13: On edge's continuation
+        //TC13: On edge's continuation
         Ray ray5 = new Ray(new Point3D(0d, 0d, 3d), new Vector(0.33, -3, 1.75));
         assertEquals(null, polygon.findIntersections(ray5), "ERROR - TC13: Ray's line begins before the plane on edge's continuation");
 

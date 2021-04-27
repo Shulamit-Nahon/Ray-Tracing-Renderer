@@ -10,15 +10,14 @@ import java.util.List;
  * A Geometries class
  * defined by its a list intersectables
  */
-public class Geometries implements Intersectable{
+public class Geometries implements Intersectable {
 
     List<Intersectable> intersectables = null;
 
     /**
-     *
      * @param intersectables_
      */
-    public void add(Intersectable... intersectables_){
+    public void add(Intersectable... intersectables_) {
         for (Intersectable item : intersectables_) {
             this.intersectables.add(item);
         }
@@ -28,20 +27,19 @@ public class Geometries implements Intersectable{
      * constructor that initialize the intersections list
      */
     public Geometries() {
-        intersectables= new LinkedList<>();
+        intersectables = new LinkedList<>();
     }
 
     /**
-     *
      * @param intersectables
      */
     public Geometries(Intersectable... intersectables) {
         this.intersectables = new LinkedList<>();
-            add(intersectables);
+        add(intersectables);
     }
 
     /**
-     * //////////////////////////////////
+     * finds intersections between geometries
      *
      * @param ray
      * @return the intersections list
@@ -51,8 +49,8 @@ public class Geometries implements Intersectable{
         List<Point3D> result = null;
         for (Intersectable item : this.intersectables) {
             List<Point3D> itemPoints = item.findIntersections(ray);
-            if(itemPoints!=null){
-                if (result == null){
+            if (itemPoints != null) {
+                if (result == null) {
                     result = new LinkedList<>();
                 }
                 result.addAll(itemPoints);

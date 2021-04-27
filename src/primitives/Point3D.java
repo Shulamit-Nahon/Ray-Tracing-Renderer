@@ -14,6 +14,7 @@ public class Point3D {
 
     /**
      * primary constructor for Point3D
+     *
      * @param x_ coordinate value for X axis
      * @param y_ coordinate value for Y axis
      * @param z_ coordinate value for Z axis
@@ -23,6 +24,7 @@ public class Point3D {
         this.y = new Coordinate(y_);
         this.z = new Coordinate(z_);
     }
+
     /**
      * constructor for Point3D
      *
@@ -35,19 +37,20 @@ public class Point3D {
         this(x_.coord, y_.coord, z_.coord);
     }
 
-
     /**
      * @return Returns the X-axis values of the point
      */
     public double getX() {
         return x.coord;
     }
+
     /**
      * @return Returns the Y-axis values of the point
      */
     public double getY() {
         return y.coord;
     }
+
     /**
      * @return Returns the Z-axis values of the point
      */
@@ -56,7 +59,6 @@ public class Point3D {
     }
 
     /**
-     *
      * @param o Object (basicaly another Point3d) to compare
      * @return true or false accordingly
      */
@@ -86,7 +88,7 @@ public class Point3D {
         final double y1 = this.y.coord;
         final double z1 = this.z.coord;
 
-        return ((x2 - x1)*(x2 - x1))+((y2 - y1)*(y2 - y1))+((z2 - z1) * (z2 - z1));
+        return ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)) + ((z2 - z1) * (z2 - z1));
     }
 
     /**
@@ -99,9 +101,8 @@ public class Point3D {
     }
 
     /**
-     *
      * @param v
-     * @return (x+vx,y+vy,z+vz)
+     * @return (x + vx, y + vy, z + vz)
      * Connecting the vector coordinate values to the point coordinate values
      */
     public Point3D add(Vector v) {
@@ -112,7 +113,6 @@ public class Point3D {
     }
 
     /**
-     *
      * @param pt2 Point3d from whom we create the Vector
      *            pointing toward the actual Point3d instance
      * @return
@@ -121,7 +121,7 @@ public class Point3D {
         if (pt2.equals(this)) {
             throw new IllegalArgumentException("cannot create Vector to Point(0,0,0)");
         }
-        return  new Vector(new Point3D(
+        return new Vector(new Point3D(
                 x.coord - pt2.x.coord,
                 y.coord - pt2.y.coord,
                 z.coord - pt2.z.coord

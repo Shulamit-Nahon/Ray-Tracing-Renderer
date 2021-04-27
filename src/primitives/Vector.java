@@ -25,7 +25,7 @@ public class Vector extends java.util.Vector {
      */
     public Vector(Point3D head_) {
         if (head_.equals(ZERO)) {
-           throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
+            throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
         }
         head = head_;
     }
@@ -33,11 +33,11 @@ public class Vector extends java.util.Vector {
     /**
      * constructor for Vector class
      *
-     * @param x_  X Coordinate of the head Point
-     * @param y_  Y Coordinate of the head Point
-     * @param z_  Z Coordinate of the head Point
+     * @param x_ X Coordinate of the head Point
+     * @param y_ Y Coordinate of the head Point
+     * @param z_ Z Coordinate of the head Point
      */
-    public Vector (Coordinate x_, Coordinate y_, Coordinate z_) {
+    public Vector(Coordinate x_, Coordinate y_, Coordinate z_) {
 
         this(x_.coord, y_.coord, z_.coord);
     }
@@ -49,8 +49,8 @@ public class Vector extends java.util.Vector {
      * @param y_ value for Y Coordinate of the head Point
      * @param z_ value for Z Coordinate of the head Point
      */
-    public Vector (double x_, double y_, double z_) {
-        this(new Point3D(x_,y_,z_));
+    public Vector(double x_, double y_, double z_) {
+        this(new Point3D(x_, y_, z_));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Vector extends java.util.Vector {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vector vector = (Vector) o;
-       return head.equals(vector.head);
+        return head.equals(vector.head);
     }
 
 
@@ -66,7 +66,7 @@ public class Vector extends java.util.Vector {
     public String toString() {
 
         return "{" + head + '}';
-   }
+    }
 
     /**
      * creates new vector by the 3 new values from adding the 2 values of each vector
@@ -85,10 +85,10 @@ public class Vector extends java.util.Vector {
     /**
      * creates new vector by the 3 new values from subtraction of the 2 values of each vector
      *
-     * @param  vector
+     * @param vector
      * @return new Vector(u-v)
      */
-    public Vector substract (Vector vector) {
+    public Vector substract(Vector vector) {
         double x = head.x.coord - vector.head.x.coord;
         double y = head.y.coord - vector.head.y.coord;
         double z = head.z.coord - vector.head.z.coord;
@@ -103,14 +103,14 @@ public class Vector extends java.util.Vector {
      * @param scalar scaling factot
      */
     public Vector scale(double scalar) {
-        if(Double.compare(scalar,0d)==0) {
+        if (Double.compare(scalar, 0d) == 0) {
             throw new IllegalArgumentException("You can not multiplie by zero");
         }
-            double x = head.x.coord * scalar;
-            double y = head.y.coord * scalar;
-            double z = head.z.coord * scalar;
+        double x = head.x.coord * scalar;
+        double y = head.y.coord * scalar;
+        double z = head.z.coord * scalar;
 
-            return new Vector(new Point3D(x, y, z));
+        return new Vector(new Point3D(x, y, z));
     }
 
     /**

@@ -7,7 +7,7 @@ import java.util.List;
 //import java.util.Vector;
 
 /**
- * A Trianglem class registered from a polygon
+ * A Triangle class registered from a polygon
  * defined by a polygon with 3 vertices
  */
 public class Triangle extends Polygon {
@@ -24,7 +24,7 @@ public class Triangle extends Polygon {
     }
 
     /**
-     * /////////////////////////////
+     * finds intersections between the ray and the triangle
      *
      * @param ray
      * @return

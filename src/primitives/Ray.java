@@ -14,6 +14,7 @@ public class Ray {
 
     /**
      * Ray constructor receiving a Point3D and vector To create the ray
+     *
      * @param pOrigin
      * @param direction
      */
@@ -24,6 +25,7 @@ public class Ray {
 
     /**
      * Function for returning the starting point of the ray on the axis
+     *
      * @return point of the ray on the axis
      */
     public Point3D getpOrigin() {
@@ -32,6 +34,7 @@ public class Ray {
 
     /**
      * Function returns the vector direction of the ray on the axis
+     *
      * @return the vector direction of the ray on the axis
      */
     public Vector getDirection() {
@@ -63,6 +66,4 @@ public class Ray {
         Ray ray = (Ray) o;
         return Objects.equals(_pOrigin, ray._pOrigin) && Objects.equals(_direction, ray._direction);
     }
-
-
 }

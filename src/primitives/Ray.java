@@ -1,4 +1,7 @@
 package primitives;
+
+import java.util.Objects;
+
 /**
  * The RAY class represents a fundamental object in geometry,
  * a ray defined by a point and a direction
@@ -44,4 +47,22 @@ public class Ray {
     public Point3D getTargetPoint(double t) {
         return _pOrigin.add(_direction.scale(t));
     }
+
+    @Override
+    public String toString() {
+        return "Ray{" +
+                "_pOrigin=" + _pOrigin +
+                ", _direction=" + _direction +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ray ray = (Ray) o;
+        return Objects.equals(_pOrigin, ray._pOrigin) && Objects.equals(_direction, ray._direction);
+    }
+
+
 }

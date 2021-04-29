@@ -4,6 +4,8 @@ import elements.AmbientLight;
 import geometries.Geometries;
 import primitives.Color;
 
+import java.util.LinkedList;
+
 public class Scene {
 
     private final String name;
@@ -11,8 +13,13 @@ public class Scene {
     public AmbientLight ambientLight;
     public Geometries geometries;
 
+    /**
+     * constructor
+     * @param name - reset the scene name
+     */
     public Scene(String name) {
         this.name = name;
+        geometries= new Geometries();
     }
 
     //chaining methods
@@ -30,4 +37,6 @@ public class Scene {
         this.geometries = geometries;
         return this;
     }
+
+
 }

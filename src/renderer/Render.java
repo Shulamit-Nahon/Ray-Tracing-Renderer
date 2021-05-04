@@ -15,6 +15,7 @@ public class Render {
     Camera _camera = null;
     RayTracerBase _rayTracerBase = null;
 
+    //chaining methods
     public Render setImageWriter(ImageWriter imageWriter) {
         _imageWriter = imageWriter;
         return this;

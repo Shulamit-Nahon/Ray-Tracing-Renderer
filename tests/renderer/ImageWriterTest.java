@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ImageWriterTest {
 
     @Test
-    void writeToImage() {
+    void testWriteToImage() {
         int nX = 800;
         int nY = 500;
         int gapX = nX / 16;

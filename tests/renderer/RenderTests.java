@@ -9,7 +9,6 @@ import scene.Scene;
 /**
  * Test rendering a basic image
  *
- * @author Dan
  */
 public class RenderTests {
     private Camera camera = new Camera(Point3D.ZERO, new Vector(0, 0, -1), new Vector(0, 1, 0)) //

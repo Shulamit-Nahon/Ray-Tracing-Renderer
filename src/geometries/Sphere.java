@@ -11,7 +11,7 @@ import static primitives.Util.isZero;
  * Sphere class
  * defined by the main center point and radius of the sphere
  */
-public class Sphere extends RadialGeometry implements Geometry {
+public class Sphere extends RadialGeometry {
 
     Point3D cenetr; //center point of Sphere
 
@@ -56,17 +56,16 @@ public class Sphere extends RadialGeometry implements Geometry {
         return v.normalize();
     }
 
+
     /**
-     * finds intersections between the ray and the sphere
-     *
+     * find Geometry Intersections
      * @param ray
-     * @return
+     * @return Geometry Intersections points
      */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         if (ray.getpOrigin().equals(cenetr)) {
-            return List.of(ray.getTargetPoint(radius));
+            return List.of(new GeoPoint(this,ray.getTargetPoint(radius)));
         }
 
         Vector U = cenetr.subtract(ray.getpOrigin());
@@ -84,13 +83,13 @@ public class Sphere extends RadialGeometry implements Geometry {
         double t1 = alignZero(tm + th);
         double t2 = alignZero(tm - th);
         if (t1 > 0 && t2 > 0) {
-            return List.of(ray.getTargetPoint(t1), ray.getTargetPoint(t2));
+            return List.of(new GeoPoint(this,ray.getTargetPoint(t1)), new GeoPoint(this,ray.getTargetPoint(t2)));
         }
         if (t1 > 0) {
-            return List.of(ray.getTargetPoint(t1));
+            return List.of(new GeoPoint(this,ray.getTargetPoint(t1)));
         }
         if (t2 > 0) {
-            return List.of(ray.getTargetPoint(t2));
+            return List.of(new GeoPoint(this,ray.getTargetPoint(t2)));
         }
         return null;
     }

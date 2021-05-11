@@ -1,8 +1,10 @@
 package primitives;
 
+import geometries.Intersectable;
+
 import java.util.List;
 import java.util.Objects;
-
+import geometries.Intersectable.GeoPoint;
 /**
  * The RAY class represents a fundamental object in geometry,
  * a ray defined by a point and a direction
@@ -50,6 +52,25 @@ public class Ray {
      */
     public Point3D getTargetPoint(double t) {
         return _pOrigin.add(_direction.scale(t));
+    }
+
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> pointlist){
+        GeoPoint minPoint = null;
+
+        if(pointlist == null){
+            return null;
+        }
+
+        double distance = Double.POSITIVE_INFINITY;
+
+        for (GeoPoint geo:pointlist) {
+            double temp = geo.point.distance(_pOrigin);
+            if(temp<distance){
+                distance=temp;
+                minPoint=geo;
+            }
+        }
+        return minPoint;
     }
 
     public Point3D findClosestPoint(List<Point3D> point3DList){

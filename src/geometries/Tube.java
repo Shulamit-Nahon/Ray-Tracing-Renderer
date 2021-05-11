@@ -9,7 +9,7 @@ import static primitives.Util.isZero;
 /**
  * Tube class represented by radius and ray
  */
-public class Tube extends RadialGeometry implements Geometry {
+public class Tube extends RadialGeometry  {
 
     final Ray axisRay; //Tube ray
 
@@ -59,8 +59,9 @@ public class Tube extends RadialGeometry implements Geometry {
         return n.normalize();
     }
 
+
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;
     }
 }

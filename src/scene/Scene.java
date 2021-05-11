@@ -1,17 +1,20 @@
 package scene;
 
 import elements.AmbientLight;
+import elements.LightSource;
 import geometries.Geometries;
 import primitives.Color;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Scene {
 
     private final String name;
-    public Color background;
-    public AmbientLight ambientLight;
-    public Geometries geometries;
+    public Color background=Color.BLACK;
+    public AmbientLight ambientLight=new AmbientLight();
+    public Geometries geometries= new Geometries();
+    public List<LightSource> lights;
 
     /**
      * constructor
@@ -20,6 +23,7 @@ public class Scene {
     public Scene(String name) {
         this.name = name;
         geometries= new Geometries();
+        lights =new LinkedList<LightSource>();
     }
 
     //chaining methods
@@ -38,5 +42,9 @@ public class Scene {
         return this;
     }
 
+    public Scene setLights(List<LightSource> lights){
+        this.lights =lights;
+        return this;
+    }
 
 }

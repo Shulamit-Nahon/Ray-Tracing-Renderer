@@ -24,13 +24,12 @@ public class Triangle extends Polygon {
     }
 
     /**
-     * finds intersections between the ray and the triangle
      *
      * @param ray
      * @return
      */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         //check if there is intersection with the plane
         if (this.plane.findIntersections(ray) == null) {
             return null;
@@ -44,7 +43,7 @@ public class Triangle extends Polygon {
         Vector N3 = v3.crossProduct(v1).normalized();//𝑁3 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣3 × 𝑣1
         //The point is inside the triangle if all 𝒗 ∙ 𝑵𝒊 have the same sign (+/-)
         if ((v.dotProduct(N1) < 0 && v.dotProduct(N2) < 0 && v.dotProduct(N3) < 0) || (v.dotProduct(N1) > 0 && v.dotProduct(N2) > 0 && v.dotProduct(N3) > 0)) {
-            return this.plane.findIntersections(ray);
+            return List.of(new GeoPoint(this,this.plane.findIntersections(ray).get(0)));
         }
         return null;
     }

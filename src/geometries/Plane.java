@@ -11,7 +11,7 @@ import static primitives.Util.isZero;
  * class plane
  * Defined by a point in space and a vector perpendicular to the plane
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     final Point3D q0; //point in the space of the plain
 
@@ -80,50 +80,45 @@ public class Plane implements Geometry {
         return normal;
     }
 
-    /**
-     * finds intersections between the ray and the plane
-     *
-     * @param ray
-     * @return
-     */
+
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        Point3D P0 = ray.getpOrigin();
-        Vector v = ray.getDirection();
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+            Point3D P0 = ray.getpOrigin();
+            Vector v = ray.getDirection();
 
-        Vector n = normal;
+            Vector n = normal;
 
-        if (q0.equals(P0)) {
-            return null;
+            if (q0.equals(P0)) {
+                return null;
+            }
+            // Ray is orthogonal to the plane
+            if (v.normalized().equals(n.normalized())) {
+                return null;
+            }
+            Vector P0_Q0 = q0.subtract(P0);
+
+            double mechane = alignZero(n.dotProduct(P0_Q0));
+
+            if (isZero(mechane)) {
+                return null;
+            }
+
+            //mone
+            double nv = alignZero(n.dotProduct(v));
+
+            // ray is lying in the plane axis
+            if (isZero(nv)) {
+                return null;
+            }
+
+            double t = alignZero(mechane / nv);
+
+            if (t <= 0) {
+                return null;
+            }
+            Point3D P = ray.getTargetPoint(t);
+
+            return List.of(new GeoPoint(this,P));
         }
-        // Ray is orthogonal to the plane
-        if (v.normalized().equals(n.normalized())) {
-            return null;
-        }
-        Vector P0_Q0 = q0.subtract(P0);
-
-        double mechane = alignZero(n.dotProduct(P0_Q0));
-
-        if (isZero(mechane)) {
-            return null;
-        }
-
-        //mone
-        double nv = alignZero(n.dotProduct(v));
-
-        // ray is lying in the plane axis
-        if (isZero(nv)) {
-            return null;
-        }
-
-        double t = alignZero(mechane / nv);
-
-        if (t <= 0) {
-            return null;
-        }
-        Point3D P = ray.getTargetPoint(t);
-
-        return List.of(P);
-    }
 
 }

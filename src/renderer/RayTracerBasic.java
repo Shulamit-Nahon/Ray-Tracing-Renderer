@@ -65,12 +65,13 @@ public class RayTracerBasic extends RayTracerBase {
     }
 
     private Color calcSpecular(double ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
-        Vector r=n.scale(l.dotProduct(n)*-2);
-        double minus_vr=v.dotProduct(r)*-1;
+
+           Vector r=l.substract(n.scale(alignZero(l.dotProduct(n)*2)));//////
+          double minus_vr=alignZero(v.dotProduct(r)*-1);
         return lightIntensity.scale(ks*Math.pow(Math.max(0,minus_vr),nShininess));
     }
 
     private Color calcDiffusive(double kd, Vector l, Vector n, Color lightIntensity) {
-        return lightIntensity.scale(kd*Math.abs(l.dotProduct(n)));
-    }
+        return lightIntensity.scale(kd*Math.abs(alignZero(l.dotProduct(n))));}
+
 }

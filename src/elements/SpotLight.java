@@ -18,7 +18,7 @@ public class SpotLight extends PointLight  {
      */
     protected SpotLight(Color intensity, Point3D position,Vector direction) {
         super(intensity, position);
-        this._direction=direction;
+        this._direction=direction.normalized();
     }
 
     @Override
@@ -31,6 +31,6 @@ public class SpotLight extends PointLight  {
     }
 
     public Vector getL(Point3D p){
-        return _direction;
+        return _direction.normalized();
     }
 }

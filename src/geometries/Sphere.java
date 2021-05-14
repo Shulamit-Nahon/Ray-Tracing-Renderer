@@ -65,7 +65,7 @@ public class Sphere extends RadialGeometry {
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         if (ray.getpOrigin().equals(cenetr)) {
-            return List.of(new GeoPoint(this,ray.getTargetPoint(radius)));
+            return List.of(new GeoPoint(this,ray.getTargetPoint(radius)));////
         }
 
         Vector U = cenetr.subtract(ray.getpOrigin());

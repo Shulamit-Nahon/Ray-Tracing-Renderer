@@ -64,7 +64,7 @@ public class Ray {
         double distance = Double.POSITIVE_INFINITY;
 
         for (GeoPoint geo:pointlist) {
-            double temp = geo.point.distance(_pOrigin);
+            double temp = geo.point.distanceSquared(_pOrigin);
             if(temp<distance){
                 distance=temp;
                 minPoint=geo;

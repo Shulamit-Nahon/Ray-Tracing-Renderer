@@ -17,7 +17,7 @@ public class DirectionalLight extends Light implements LightSource{
      */
     protected DirectionalLight(Color intensity,Vector direction) {
         super(intensity);
-        this._direction=direction;
+        this._direction=direction.normalized();
     }
 
     @Override

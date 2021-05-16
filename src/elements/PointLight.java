@@ -10,20 +10,40 @@ import primitives.Vector;
 public class PointLight extends Light implements LightSource{
 
     private Point3D _position;
+    /**
+     * Factors (kc
+     * , kl
+     * , kq
+     * ) for attenuation with distance (d)
+     */
     private double _Kc=1;
     private double _Kl=0;
     private double _Kq=0;
 
+    /**
+     * set Kc
+     * @param kc
+     * @return point light
+     */
     public PointLight setKc(double kc) {
         _Kc = kc;
         return this;
     }
-
+    /**
+     * set kl
+     * @param kl
+     * @return point light
+     */
     public PointLight setKl(double kl) {
         _Kl = kl;
         return this;
     }
 
+    /**
+     * set Kq
+     * @param kq
+     * @return point light
+     */
     public PointLight setKq(double kq) {
         _Kq = kq;
         return this;
@@ -43,6 +63,11 @@ public class PointLight extends Light implements LightSource{
         //this._Kq=kq;
     }
 
+    /**
+     * get Intensity of Point Light
+     * @param p
+     * @return color Intensity
+     */
     @Override
     public Color getIntensity(Point3D p) {
         double distance=_position.distance(p);
@@ -50,8 +75,13 @@ public class PointLight extends Light implements LightSource{
         return _intensity.reduce(denominator);
     }
 
+    /**
+     * get L
+     * @param p
+     * @return Lighting direction value
+     */
     @Override
     public Vector getL(Point3D p) {
         return p.subtract(_position).normalized();
-    }//////return _position.subtract(p).normalized();
+    }
 }

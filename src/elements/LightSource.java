@@ -1,11 +1,13 @@
 package elements;
 
 import primitives.*;
-
+/**
+ *  interface for all lights which have a source.
+ *
+ * @author lea haimovich
+ * @author shulamit nahon
+ */
 public interface LightSource {
-    /**
-     * interface for light of source
-     */
 
     /**
      *

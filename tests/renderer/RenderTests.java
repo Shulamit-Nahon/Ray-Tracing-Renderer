@@ -5,6 +5,7 @@ import geometries.*;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import scene.Scene;
+import xml.XmlSceneParser;
 
 
 /**
@@ -53,9 +54,7 @@ public class RenderTests {
      */
     @Test
     public void basicRenderXml() {
-        Scene scene = new Scene("XML Test scene");
-        // enter XML file name and parse from XML file into scene object
-        // ...
+        Scene scene = new XmlSceneParser().parse("images/basicRenderTestTwoColors.xml");
 
         ImageWriter imageWriter = new ImageWriter("xml render test", 1000, 1000);
         Render render = new Render() //

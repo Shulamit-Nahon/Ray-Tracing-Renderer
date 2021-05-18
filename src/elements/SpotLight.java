@@ -39,8 +39,8 @@ public class SpotLight extends PointLight  {
      * @param p
      * @return Lighting direction value
      */
-    public Vector getL(Point3D p){
+   // public Vector getL(Point3D p){
 
-        return super.getL(p);
-    }
+    //    return super.getL(p);
+   // }
 }

@@ -22,4 +22,5 @@ public class XmlAmbientLightCreator implements XmlObjectCreator<AmbientLight> {
         Color color = new XmlColorCreator().create(element.getAttribute("color"));
         return new AmbientLight(color,1);
     }
+
 }

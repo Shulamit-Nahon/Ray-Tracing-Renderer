@@ -94,31 +94,38 @@ public class Polygon extends Geometry {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<Point3D> planeIntersections = this.plane.findIntersections(ray);
         //check if there is intersection with the plane
-        if (this.plane.findIntersections(ray) == null) {
+        if (planeIntersections == null) {
             return null;
         }
         Vector v = ray.getDirection();
         int i = vertices.size();
-        int count1 = 0; //count for 𝒗 ∙ 𝑵𝒊  with tha sing -
-        int count2 = 0; //count for 𝒗 ∙ 𝑵𝒊  with tha sing +
+        int count1 = 0; //count for 𝒗 ∙ 𝑵𝒊  with the sign -
+        int count2 = 0; //count for 𝒗 ∙ 𝑵𝒊  with the sign +
         //The point is inside the polygon if all 𝒗 ∙ 𝑵𝒊 have the same sign (+/-)
         Vector v2 = null;
-        while (!isZero(i) && !(i == 1)) {
+        while (i != 1) {
             int j = vertices.size() - i;
             Vector v1 = (this.vertices.get(j)).subtract(ray.getpOrigin());  //𝑣1 = 𝑃i − 𝑃0
             v2 = (this.vertices.get(j + 1)).subtract(ray.getpOrigin()); //𝑣2 = 𝑃i+1 − 𝑃0
             Vector N1 = v1.crossProduct(v2).normalized();   //𝑁1 = 𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑧𝑒 𝑣1 × 𝑣2
-            if (v.dotProduct(N1) < 0) count1++;
-            if (v.dotProduct(N1) > 0) count2++;
+            double dot = v.dotProduct(N1);
+            if (!isZero(dot)) {
+                if (dot < 0) count1++;
+                else count2++;
+            }
             i--;
         }
         Vector v1 = (this.vertices.get(0)).subtract(ray.getpOrigin());  //𝑣1 = 𝑃1 − 𝑃0
         Vector Ni = v2.crossProduct(v1).normalized();
-        if (v.dotProduct(Ni) < 0) count1++;
-        if (v.dotProduct(Ni) > 0) count2++;
+        double dot = v.dotProduct(Ni);
+        if (!isZero(dot)) {
+            if (dot < 0) count1++;
+            else count2++;
+        }
         if ((count1 == vertices.size()) || (count2 == vertices.size())) {
-            return List.of(new GeoPoint(this,this.plane.findIntersections(ray).get(0)));
+            return List.of(new GeoPoint(this, planeIntersections.get(0)));
         }
         return null;
     }

@@ -82,11 +82,11 @@ public class Camera {
     /**
      * constructing a ray passing through pixel(i,j) of the view plane
      *
-     * @param nX
-     * @param nY
-     * @param j
-     * @param i
-     * @return
+     * @param nX The number of the pixels along X axis
+     * @param nY The number of the pixels along Y axis
+     * @param j The index of the pixel along X axis
+     * @param i he index of the pixel along Y axis
+     * @return ray passing through pixel(i,j) of the view plane
      */
     public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
         Point3D Pc = _p0.add(_vTo.scale(_distance));

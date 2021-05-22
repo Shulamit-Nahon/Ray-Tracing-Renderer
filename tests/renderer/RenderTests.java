@@ -3,9 +3,12 @@ package renderer;
 import elements.*;
 import geometries.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import primitives.*;
 import scene.Scene;
 import xml.XmlSceneParser;
+
+import java.util.Collections;
 
 
 /**
@@ -97,31 +100,25 @@ public class RenderTests {
         render.printGrid(100, new Color(java.awt.Color.WHITE));
         render.writeToImage();
     }
-//    @Test
-//    public void funcTest1(){
-//         Scene scene1 = new Scene("Test scene");
-//         Camera camera1 = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
-//                .setViewPlaneSize(150, 150) //
-//                .setDistance(1000);
-//        scene1.geometries.add(new Triangle( //
-//                new Point3D(-150, -150, -150),
-//                new Point3D(150, -150, -150),
-//                new Point3D(75, 75, -150)));
-//        scene1.geometries.add(new Triangle( //
-//                new Point3D(-150, -150, -150),
-//                new Point3D(-70, 70, -50),
-//                new Point3D(75, 75, -150)));
-//       // scene1.geometries.add(tube);
-//      //  scene1.lights.add(new DirectionalLight(new Color(500, 300, 0), new Vector(1, 1, -1)));
-//        scene1.lights.add(new PointLight(new Color(100, 400, 100), new Point3D(50, 50, -50)));
-//        scene1.lights.add(new PointLight(new Color(500, 300, 100), new Point3D(-30, -30, -20)));
-//        ImageWriter imageWriter = new ImageWriter("Triangle1", 500, 500);
-//        Render render = new Render()//
-//                .setImageWriter(imageWriter) //
-//                .setCamera(camera1) //
-//                .setRayTracer(new RayTracerBasic(scene1));
-//        render.renderImage();
-//        render.writeToImage();
-//
-//    }
+    @Test
+    public void jaggedEdgesTest() {
+        Scene scene = new Scene("Test scene")//
+                .setAmbientLight(new AmbientLight(new Color(255, 191, 191), 1)) //
+                .setBackground(new Color(75, 127, 90));
+
+        Triangle bottomLeft = new Triangle(new Point3D(-100, 0, -100), new Point3D(0, -100, -100), new Point3D(-100, -100, -100)); // down
+
+        scene.geometries.add(new Sphere(50, new Point3D(0, 0, -100)),
+                new Triangle(new Point3D(-100, 0, -100), new Point3D(0, 100, -100), new Point3D(-100, 100, -100)), // up
+                // Top left
+                new Triangle(new Point3D(100, 0, -100), new Point3D(0, 100, -100), new Point3D(100, 100, -100)), // up
+                // Top right
+                bottomLeft,
+                new Triangle(new Point3D(100, 0, -100), new Point3D(0, -100, -100), new Point3D(100, -100, -100))); // down
+                // Bottom right
+
+        Ray ray = camera.constructRayThroughPixel(1000,1000,303,503);
+
+        assertEquals(null, bottomLeft.findIntersections(ray), "There is an intersection that is not supposed to be");
+    }
 }

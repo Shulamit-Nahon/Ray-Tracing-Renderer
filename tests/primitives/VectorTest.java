@@ -119,8 +119,8 @@ class VectorTest {
         //test normalize
         Vector vCopy = new Vector(v1.getHead());
         Vector vCopyNormalize = vCopy.normalize();
-        if (vCopy != vCopyNormalize)
-            fail("ERROR: normalize() function creates a new vector");
+        assertTrue (vCopy == vCopyNormalize, "ERROR: normalize() function creates a new vector");
+        assertTrue(isZero(1-vCopy.length()));
     }
 
     /**

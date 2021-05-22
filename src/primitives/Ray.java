@@ -1,7 +1,5 @@
 package primitives;
 
-import geometries.Intersectable;
-
 import java.util.List;
 import java.util.Objects;
 import geometries.Intersectable.GeoPoint;
@@ -18,12 +16,18 @@ public class Ray {
     /**
      * Ray constructor receiving a Point3D and vector To create the ray
      *
-     * @param pOrigin
-     * @param direction
+     * @param pOrigin The point where the ray begins
+     * @param direction The direction of the ray
      */
     public Ray(Point3D pOrigin, Vector direction) {
         _pOrigin = pOrigin;
         _direction = direction.normalized();
+    }
+
+    public Ray(Point3D point, Vector lightDirection, Vector n, double DELTA) {
+        Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : - DELTA);
+       _pOrigin= point.add(delta);
+        _direction = lightDirection.normalized();
     }
 
     /**
@@ -47,8 +51,8 @@ public class Ray {
     /**
      * Function for returning the target point of the ray on the axis
      *
-     * @param t
-     * @return
+     * @param t The distance from the source of the ray
+     * @return The point on the ray which is distance t away from the source
      */
     public Point3D getTargetPoint(double t) {
         return _pOrigin.add(_direction.scale(t));

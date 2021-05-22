@@ -2,7 +2,6 @@ package geometries;
 
 import primitives.*;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -10,9 +9,9 @@ import java.util.stream.Collectors;
 /**
  * interface for Geometries that have intersections
  */
-public interface  Intersectable {
+public interface Intersectable {
 
-    public static class GeoPoint{
+    class GeoPoint{
         public Geometry geometry;
         public Point3D point;
 

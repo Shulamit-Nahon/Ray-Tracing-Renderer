@@ -10,8 +10,8 @@ import primitives.Vector;
  */
 public abstract class Geometry implements Intersectable {
 
-    protected Color _emission=Color.BLACK;
-    private Material _material=new Material();
+    protected Color _emission = Color.BLACK;
+    private Material _material = new Material();
 
     public Material getMaterial() {
         return _material;
@@ -24,7 +24,8 @@ public abstract class Geometry implements Intersectable {
 
     /**
      * set the emission light of the geometry
-     * @param emission
+     *
+     * @param emission The emission light of the geometry
      * @return the Geometry that has been seted
      */
     public Geometry setEmission(Color emission) {
@@ -34,6 +35,7 @@ public abstract class Geometry implements Intersectable {
 
     /**
      * get the emission light of the geometry
+     *
      * @return the emission light of the geometry
      */
     public Color getEmission() {
@@ -44,5 +46,5 @@ public abstract class Geometry implements Intersectable {
      * @param point Point3D
      * @return normal of the geometry
      */
-   abstract public Vector getNormal(Point3D point);
+    abstract public Vector getNormal(Point3D point);
 }

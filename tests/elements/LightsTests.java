@@ -10,7 +10,7 @@ import scene.Scene;
 /**
  * Test rendering a basic image
  *
- * @author Dan
+ * @author Dan-
  */
 public class LightsTests {
 

@@ -42,6 +42,60 @@ public class ShadowTests {
     }
 
     /**
+     * Produce a picture of a sphere and triangle  with point light and shade
+     * Changing triangle position 1
+     */
+    @Test
+    public void sphereTriangleInitial1() {
+        scene.geometries.add( //
+                new Sphere(60, new Point3D(0, 0, -200)) //
+                        .setEmission(new Color(java.awt.Color.BLUE)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)), //
+                new Triangle(new Point3D(-100, -40, 0), new Point3D(-40, -100, 0), new Point3D(-68, -68, 10)) //
+                        .setEmission(new Color(java.awt.Color.BLUE)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)) //
+        );
+        scene.lights.add( //
+                new SpotLight(new Color(400, 240, 0), new Point3D(-100, -100, 200), new Vector(1, 1, -3)) //
+                        .setKl(1E-5).setKq(1.5E-7));
+
+        Render render = new Render(). //
+                setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
+                .setCamera(camera) //
+                .setRayTracer(new RayTracerBasic(scene));
+        render.renderImage();
+        render.writeToImage();
+    }
+
+
+    /**
+     * Produce a picture of a sphere and triangle  with point light and shade
+     * Changing triangle position 2
+     */
+    @Test
+    public void sphereTriangleInitial2() {
+        scene.geometries.add( //
+                new Sphere(60, new Point3D(0, 0, -200)) //
+                        .setEmission(new Color(java.awt.Color.BLUE)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)), //
+                new Triangle(new Point3D(-100, -40, 0), new Point3D(-40, -100, 0), new Point3D(-68, -68, 10)) //
+                        .setEmission(new Color(java.awt.Color.BLUE)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)) //
+        );
+        scene.lights.add( //
+                new SpotLight(new Color(400, 240, 0), new Point3D(-100, -100, 200), new Vector(1, 1, -3)) //
+                        .setKl(1E-5).setKq(1.5E-7));
+
+        Render render = new Render(). //
+                setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
+                .setCamera(camera) //
+                .setRayTracer(new RayTracerBasic(scene));
+        render.renderImage();
+        render.writeToImage();
+    }
+
+
+    /**
      * Produce a picture of a two triangles lighted by a spot light with a Sphere
      * producing a shading
      */

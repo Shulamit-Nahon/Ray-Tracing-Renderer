@@ -93,8 +93,8 @@ public class Polygon extends Geometry {
      * @return
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
-        List<Point3D> planeIntersections = this.plane.findIntersections(ray);
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        List<GeoPoint> planeIntersections = this.plane.findGeoIntersections(ray,maxDistance);
         //check if there is intersection with the plane
         if (planeIntersections == null) {
             return null;
@@ -125,7 +125,7 @@ public class Polygon extends Geometry {
             else count2++;
         }
         if ((count1 == vertices.size()) || (count2 == vertices.size())) {
-            return List.of(new GeoPoint(this, planeIntersections.get(0)));
+            return List.of(new GeoPoint(this, planeIntersections.get(0).point));
         }
         return null;
     }

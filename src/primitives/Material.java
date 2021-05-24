@@ -7,6 +7,18 @@ public class Material {
     public double diffuse =0;
     public double specular =0;
     public int Shininess =0;
+    public double kr=0;
+    public double kt=0;
+
+    public Material setKr(double kr1) {
+        kr = kr1;
+        return this;
+    }
+
+    public Material setKt(double kt1) {
+        kt = kt1;
+        return this;
+    }
 
     /**
      * set the diffuse coefficient

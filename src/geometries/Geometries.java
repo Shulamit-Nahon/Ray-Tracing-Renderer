@@ -41,13 +41,13 @@ public class Geometries implements Intersectable {
     /**
      *
      * @param ray
-     * @return
+     * @return list o intersections geopoints
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistabce) {
         List<GeoPoint> result = null;
         for (Intersectable item : this.intersectables) {
-            List<GeoPoint> itemPoints = item.findGeoIntersections(ray);
+            List<GeoPoint> itemPoints = item.findGeoIntersections(ray, maxDistabce);
             if (itemPoints != null) {
                 if (result == null) {
                     result = new LinkedList<>();

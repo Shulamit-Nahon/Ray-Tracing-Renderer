@@ -28,6 +28,6 @@ public class SpotLight extends PointLight  {
     @Override
     public Color getIntensity(Point3D p){
         double factor =alignZero(Math.max(0,_direction.dotProduct(getL(p))));
-        return super.getIntensity().scale(factor);
+        return super.getIntensity(p).scale(factor);
     }
 }

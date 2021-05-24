@@ -37,6 +37,12 @@ public class RayTracerBasic extends RayTracerBase {
         return calcLocalEffects(point,ray);
     }
 
+    /**
+     *
+     * @param intersection
+     * @param ray
+     * @return
+     */
     private Color calcLocalEffects(GeoPoint intersection, Ray ray) {
 
         Vector v = ray.getDirection();

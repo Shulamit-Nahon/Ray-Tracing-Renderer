@@ -70,6 +70,7 @@ public class RayTracerBasic extends RayTracerBase {
         return intersections == null;
     }
 
+
     private Color calcSpecular(double ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
 
            Vector r=l.substract(n.scale(alignZero(l.dotProduct(n)*2)));//////

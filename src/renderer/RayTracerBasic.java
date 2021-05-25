@@ -64,7 +64,7 @@ public class RayTracerBasic extends RayTracerBase {
         if (nv == 0) {
             return Color.BLACK;
         }
-        
+
         Material material = geopoint.geometry.getMaterial();
         int nShininess = material.Shininess;
 
@@ -119,7 +119,7 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
-        Ray lightRay = new Ray(geopoint, lightDirection, n);
+        Ray lightRay = new Ray(geopoint.point, lightDirection, n);
         double lightDistance = light.getDistance(geopoint.point);
         var intersections = _scene.geometries.findGeoIntersections(lightRay);
         if (intersections == null) return 1.0;
@@ -176,11 +176,11 @@ public class RayTracerBasic extends RayTracerBase {
         Material material = gp.geometry.getMaterial();
         double kkr = k * material.kr;
         if (kkr > MIN_CALC_COLOR_K)
-            color = calcGlobalEffect(constructReflectedRay(gp.point, v, n), level, material.kr, kkr);
+            color = calcGlobalEffect(constructReflectedRay(gp.point, v.getDirection(), n), level, material.kr, kkr);
         double kkt = k * material.kt;
         if (kkt > MIN_CALC_COLOR_K)
             color = color.add(
-                    calcGlobalEffect(constructRefractedRay(gp.point, v, n), level, material.kt, kkt));
+                    calcGlobalEffect(constructRefractedRay(gp.point, v.getDirection(), n), level, material.kt, kkt));
         return color;
     }
 

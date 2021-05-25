@@ -27,7 +27,7 @@ public class Ray {
         _direction = direction.normalized();
     }
 
-    public Ray(GeoPoint point, Vector lightDirection, Vector n) {
+    public Ray(Point3D point, Vector lightDirection, Vector n) {
         Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : - DELTA);
        _pOrigin= point.add(delta);
         _direction = lightDirection.normalized();

@@ -3,11 +3,14 @@ package primitives;
 import java.util.List;
 import java.util.Objects;
 import geometries.Intersectable.GeoPoint;
+
 /**
  * The RAY class represents a fundamental object in geometry,
  * a ray defined by a point and a direction
  */
 public class Ray {
+
+    private static final double DELTA = 0.1;
 
     final Point3D _pOrigin; //The starting point of the foundation on the axis
 
@@ -24,11 +27,13 @@ public class Ray {
         _direction = direction.normalized();
     }
 
-    public Ray(Point3D point, Vector lightDirection, Vector n, double DELTA) {
+    public Ray(GeoPoint point, Vector lightDirection, Vector n) {
         Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : - DELTA);
        _pOrigin= point.add(delta);
         _direction = lightDirection.normalized();
     }
+
+
 
     /**
      * Function for returning the starting point of the ray on the axis

@@ -110,7 +110,8 @@ public class Vector extends java.util.Vector {
         double y = head.y.coord * scalar;
         double z = head.z.coord * scalar;
 
-        return new Vector(new Point3D(x, y, z));
+        Point3D point3D = new Point3D(x, y, z);
+        return new Vector(point3D);
     }
 
     /**
@@ -204,4 +205,7 @@ public class Vector extends java.util.Vector {
         result.normalize();
         return result;
     }
+
+
+
 }

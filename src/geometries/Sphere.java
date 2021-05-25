@@ -13,13 +13,13 @@ import static primitives.Util.isZero;
  */
 public class Sphere extends RadialGeometry {
 
-    Point3D cenetr; //center point of Sphere
+    Point3D center; //center point of Sphere
 
     /**
      * @return center point of Sphere
      */
-    public Point3D getCenetr() {
-        return cenetr;
+    public Point3D getCenter() {
+        return center;
     }
 
     /**
@@ -30,13 +30,13 @@ public class Sphere extends RadialGeometry {
      */
     public Sphere(double radius, Point3D cenetr) {
         super(radius);
-        this.cenetr = cenetr;
+        this.center = cenetr;
     }
 
     @Override
     public String toString() {
         return "Sphere{" +
-                "cenetr=" + cenetr +
+                "cenetr=" + center +
                 ", radius=" + radius +
                 '}';
     }
@@ -50,9 +50,9 @@ public class Sphere extends RadialGeometry {
     @Override
     public Vector getNormal(Point3D point) {
 
-        if (point.equals(cenetr))
+        if (point.equals(center))
             throw new IllegalArgumentException("ERROR: point equals center");
-        Vector v = point.subtract(cenetr);
+        Vector v = point.subtract(center);
         return v.normalize();
     }
 
@@ -110,11 +110,11 @@ public class Sphere extends RadialGeometry {
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
-        if (ray.getpOrigin().equals(cenetr)) {
+        if (ray.getpOrigin().equals(center)) {
             return List.of(new GeoPoint(this,ray.getTargetPoint(radius)));////
         }
 
-        Vector U = cenetr.subtract(ray.getpOrigin());
+        Vector U = center.subtract(ray.getpOrigin());
         Vector V = ray.getDirection();
         double tm = U.dotProduct(V);
         double d = alignZero(Math.sqrt(U.lengthSquared() - tm * tm));//Math.sqrt(radius*radius-)

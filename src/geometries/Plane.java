@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
  */
 public class Plane extends Geometry {
 
-    final Point3D q0; //point in the space of the plain
+    final Point3D q0; //point in the space of the plane
 
     final Vector normal; //Vector vertical to the plane
 
@@ -50,7 +50,9 @@ public class Plane extends Geometry {
     /**
      * @return point in the space of the plain
      */
-    public Point3D getQ0() { return q0; }
+    public Point3D getQ0() {
+        return q0;
+    }
 
     /**
      * getter of the normal vector filed
@@ -82,44 +84,44 @@ public class Plane extends Geometry {
 
 
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
-            Point3D P0 = ray.getpOrigin();
-            Vector v = ray.getDirection();
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
+        Point3D P0 = ray.getpOrigin();
+        Vector v = ray.getDirection();
 
-            Vector n = normal;
+        Vector n = normal;
 
-            if (q0.equals(P0)) {
-                return null;
-            }
-            // Ray is orthogonal to the plane
-            if (v.normalized().equals(n.normalized())) {
-                return null;
-            }
-            Vector P0_Q0 = q0.subtract(P0);
-
-            double mechane = alignZero(n.dotProduct(P0_Q0));
-
-            if (isZero(mechane)) {
-                return null;
-            }
-
-            //mone
-            double nv = alignZero(n.dotProduct(v));
-
-            // ray is lying in the plane axis
-            if (isZero(nv)) {
-                return null;
-            }
-
-            double t = alignZero(mechane / nv);
-
-            if (t <= 0) {
-                return null;
-            }
-            if(alignZero(t-maxDistance)<=0){
-                Point3D P = ray.getTargetPoint(t);
-                return List.of(new GeoPoint(this,P));
-            }
-          return null;
+        if (q0.equals(P0)) {
+            return null;
         }
+        // Ray is orthogonal to the plane
+        if (v.normalized().equals(n.normalized())) {
+            return null;
+        }
+        Vector P0_Q0 = q0.subtract(P0);
+
+        double denominator = alignZero(n.dotProduct(P0_Q0));
+
+        if (isZero(denominator)) {
+            return null;
+        }
+
+        //numerator
+        double nv = alignZero(n.dotProduct(v));
+
+        // ray is lying in the plane axis
+        if (isZero(nv)) {
+            return null;
+        }
+
+        double t = alignZero(denominator / nv);
+
+        if (t <= 0) {
+            return null;
+        }
+        if (alignZero(t - maxDistance) < 0) {
+            Point3D P = ray.getTargetPoint(t);
+            return List.of(new GeoPoint(this, P));
+        }
+        return null;
+    }
 }

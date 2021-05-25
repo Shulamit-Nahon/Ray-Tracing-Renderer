@@ -46,12 +46,14 @@ public class ShadowTests {
      * Changing triangle position 1
      */
     @Test
-    public void sphereTriangleInitial1() {
+    public void sphereTriangleInitialDown() {
         scene.geometries.add( //
                 new Sphere(60, new Point3D(0, 0, -200)) //
                         .setEmission(new Color(java.awt.Color.BLUE)) //
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)), //
-                new Triangle(new Point3D(-100, -40, 0), new Point3D(-40, -100, 0), new Point3D(-68, -68, 10)) //
+                new Triangle(new Point3D(-50, -20, 0),
+                        new Point3D(-20, -50, 0),
+                        new Point3D(-48, -48, -4)) //
                         .setEmission(new Color(java.awt.Color.BLUE)) //
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)) //
         );
@@ -60,7 +62,7 @@ public class ShadowTests {
                         .setKl(1E-5).setKq(1.5E-7));
 
         Render render = new Render(). //
-                setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
+                setImageWriter(new ImageWriter("sphereTriangleInitialDown", 400, 400)) //
                 .setCamera(camera) //
                 .setRayTracer(new RayTracerBasic(scene));
         render.renderImage();
@@ -73,12 +75,14 @@ public class ShadowTests {
      * Changing triangle position 2
      */
     @Test
-    public void sphereTriangleInitial2() {
+    public void sphereTriangleInitialUp() {
         scene.geometries.add( //
                 new Sphere(60, new Point3D(0, 0, -200)) //
                         .setEmission(new Color(java.awt.Color.BLUE)) //
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)), //
-                new Triangle(new Point3D(-100, -40, 0), new Point3D(-40, -100, 0), new Point3D(-68, -68, 10)) //
+                new Triangle(new Point3D(-63, -33, 0),
+                        new Point3D(-33, -63, 0),
+                        new Point3D(-61, -61, -4)) //
                         .setEmission(new Color(java.awt.Color.BLUE)) //
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(30)) //
         );
@@ -87,7 +91,7 @@ public class ShadowTests {
                         .setKl(1E-5).setKq(1.5E-7));
 
         Render render = new Render(). //
-                setImageWriter(new ImageWriter("shadowSphereTriangleInitial", 400, 400)) //
+                setImageWriter(new ImageWriter("sphereTriangleInitialUp", 400, 400)) //
                 .setCamera(camera) //
                 .setRayTracer(new RayTracerBasic(scene));
         render.renderImage();

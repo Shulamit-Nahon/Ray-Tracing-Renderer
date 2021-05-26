@@ -7,6 +7,8 @@ import primitives.*;
 import renderer.*;
 import scene.Scene;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Testing basic shadows
  *
@@ -99,6 +101,9 @@ public class ShadowTests {
         render.writeToImage();
     }
 
+    /**
+     * move light source
+     */
     @Test
     public void sphereTriangleInitial1() {
         scene.geometries.add( //
@@ -121,6 +126,9 @@ public class ShadowTests {
         render.writeToImage();
     }
 
+    /**
+     * move light source
+     */
     @Test
     public void sphereTriangleInitial2() {
         scene.geometries.add( //
@@ -145,6 +153,27 @@ public class ShadowTests {
 
 
 
+
+
+    /**
+     *  check the func:  List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance)
+     *   //A test function that checks that the function does filter and selects the point closest to the beam
+     *   bonus
+     *   We created a digit and a beam and checked if there were indeed intersections at the desired distance
+     */
+    @Test
+    public void checkClosestPointSelected() {
+
+       // Sphere sp1= new Sphere(4, new Point3D(0, 0, 0));//
+        Sphere sp2= new Sphere(2, new Point3D(0, 6, 0)) ;
+        //Checks if 0 points are indeed obtained at a distance of 0
+        assertEquals( null,sp2.findGeoIntersections(new Ray(new Point3D(0,8,0),new Vector(1,-3,0.8)),0),
+                "the distance is 0 and the there are no intersection point in distance 0");
+//Checks if there are indeed no points in the 0.1 spread
+        assertEquals( null,sp2.findGeoIntersections(new Ray(new Point3D(0,8,0),new Vector(1,-3,0.8)),0.1),
+                "the distance is 0 and the there are no intersection point in distance 0.1");
+
+    }
     /**
      * Produce a picture of a two triangles lighted by a spot light with a Sphere
      * producing a shading

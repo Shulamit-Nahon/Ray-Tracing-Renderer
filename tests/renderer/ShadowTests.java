@@ -102,7 +102,7 @@ public class ShadowTests {
     }
 
     /**
-     * move light source
+     * move light source-
      */
     @Test
     public void sphereTriangleInitial1() {

@@ -120,7 +120,7 @@ class VectorTest {
         Vector vCopy = new Vector(v1.getHead());
         Vector vCopyNormalize = vCopy.normalize();
         assertTrue (vCopy == vCopyNormalize, "ERROR: normalize() function creates a new vector");
-        assertTrue(isZero(1-vCopy.length()));
+        assertEquals(1,vCopy.length(),0.00001, "The normalize is not the correct length");
     }
 
     /**

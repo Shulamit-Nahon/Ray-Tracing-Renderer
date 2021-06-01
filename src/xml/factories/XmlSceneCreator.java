@@ -22,8 +22,8 @@ public class XmlSceneCreator implements XmlObjectCreator <Scene> {
     @Override
     public Scene create(Element element) {
 
-        Element ambienLightElement = (Element)element.getElementsByTagName("ambient-light").item(0);
-        AmbientLight ambientLight = new XmlAmbientLightCreator().create(ambienLightElement);
+        Element ambientLightElement = (Element)element.getElementsByTagName("ambient-light").item(0);
+        AmbientLight ambientLight = new XmlAmbientLightCreator().create(ambientLightElement);
 
         Color background = new XmlColorCreator().create(element.getAttribute("background-color"));
 

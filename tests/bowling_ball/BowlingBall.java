@@ -2,6 +2,7 @@ package bowling_ball;
 
 import elements.Camera;
 import elements.DirectionalLight;
+import elements.PointLight;
 import elements.SpotLight;
 import geometries.Sphere;
 import geometries.Triangle;
@@ -24,27 +25,28 @@ public class BowlingBall {
      *
      */
     @Test
-    public void bowlingballTest() {
+    public void bowlingBallTest() {
         scene.geometries.add( //
                 new Sphere(56, new Point3D(0, -10, 0)) //
                         .setEmission(new Color(java.awt.Color.RED)) //
-                        .setMaterial(new Material().setDiffuse(0).setSpecular(10000).setShininess(10000)),
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)),
                 new Sphere(7.6, new Point3D(-17, -38, 42)) //
-                        .setEmission(new Color(java.awt.Color.black)) //
-                        .setMaterial(new Material().setDiffuse(0).setSpecular(0).setShininess(0)), ////
+                        .setEmission(new Color(Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)), ////
                 new Sphere(7.6, new Point3D(11, -39, 43)) //
-                        .setEmission(new Color(java.awt.Color.BLACK)) //
-                        .setMaterial(new Material().setDiffuse(0).setSpecular(0).setShininess(0)), ////
+                        .setEmission(new Color(Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)), ////
                 new Sphere(7.6, new Point3D(-3, -52, 34)) //
-                        .setEmission(new Color(java.awt.Color.BLACK)) //
-                        .setMaterial(new Material().setDiffuse(0).setSpecular(0).setShininess(0)) ////
+                        .setEmission(new Color(Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)) ////
 
 
         );
         scene.lights.add(
                 //new DirectionalLight(new Color())//
-                new SpotLight(new Color(255, 255, 255), new Point3D(-88, -88, 120), new Vector(1, 1, -3))//
+                new SpotLight(new Color(300, 255, 255), new Point3D(400, -88, 600), new Vector(1, 1, -5))//
                         .setKl(1E-5).setKq(1.5E-7));
+//                new PointLight(new Color(500, 250, 250), new Point3D(-80, -80, -130)).setKl(0.00005).setKq(0.00005));
 
         Render render = new Render(). //
                 setImageWriter(new ImageWriter("bowling-ball", 400, 400)) //

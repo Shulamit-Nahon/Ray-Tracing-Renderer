@@ -1,6 +1,7 @@
 package renderer;
 
 import elements.*;
+import geometries.Cylinder;
 import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.jupiter.api.Test;
@@ -107,6 +108,48 @@ public class ReflectionRefractionTests {
                 .setKl(4E-5).setKq(2E-7));
 
         ImageWriter imageWriter = new ImageWriter("refractionShadow", 600, 600);
+        Render render = new Render() //
+                .setImageWriter(imageWriter) //
+                .setCamera(camera) //
+                .setRayTracer(new RayTracerBasic(scene));
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+
+    @Test
+    public void newOne() {
+        Camera camera = new Camera(new Point3D(0, 0, 10000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+                .setViewPlaneSize(2500, 2500).setDistance(10000); //
+
+        scene.setAmbientLight(new AmbientLight(new Color(50, 20, 100), 0.5));
+
+        scene.geometries.add( //
+                new Sphere(400, new Point3D(-950, -900, -1000)) //
+                        .setEmission(new Color(80, 0, 100)) //
+                        .setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20).setKt(0.5)),
+                new Sphere(200, new Point3D(-950, -900, -1000)) //
+                        .setEmission(new Color(100, 20, 20)) //
+                        .setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20)),
+                new Triangle(new Point3D(1500, -1500, -1500), new Point3D(-1500, 1500, -1500),
+                        new Point3D(670, 670, 3000)) //
+                        .setEmission(new Color(20, 20, 20)) //
+                        .setMaterial(new Material().setKr(1)),
+                new Cylinder(new Ray(new Point3D(-950, -900, -1000), new Vector(0, 0, -1)), 400, 20)
+                        .setEmission(new Color(20, 30, 100))
+                        .setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20).setKt(0.5)),
+                new Triangle(new Point3D(1500, -1500, -1500), new Point3D(-1500, 1500, -1500),
+                        new Point3D(-1500, -1500, -2000)) //
+                        .setEmission(new Color(20, 20, 20)) //
+                        .setMaterial(new Material().setKr(0.5)));
+
+
+
+        scene.lights.add(new SpotLight(new Color(1020, 400, 400), new Point3D(-750, -750, -150), new Vector(-1, -1, -4)) //
+                .setKl(0.00001).setKq(0.000005));
+
+        ImageWriter imageWriter = new ImageWriter("newTest", 500, 500);
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //

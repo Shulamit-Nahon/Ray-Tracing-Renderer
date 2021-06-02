@@ -52,8 +52,8 @@ public class Render {
             //rendering the image
             int nX = _imageWriter.getNx()*2;
             int nY = _imageWriter.getNy()*2;
-            for (int i = 0; i < nY; i+=2) {
-                for (int j = 0; j < nX; j+=2) {
+            for (int i = 0; i < nY-1; i+=2) {
+                for (int j = 0; j < nX-1; j+=2) {
                     Ray rays[] = {_camera.constructRayThroughPixel(nX, nY, j+1, i+1),
                                  _camera.constructRayThroughPixel(nX, nY, j, i+1),
                                  _camera.constructRayThroughPixel(nX, nY, j+1, i),

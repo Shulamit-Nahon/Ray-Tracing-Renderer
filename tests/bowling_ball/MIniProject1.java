@@ -48,6 +48,10 @@ public class MIniProject1 {
             .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100));
     Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
             .setViewPlaneSize(150, 150).setDistance(1000);
+
+    /**
+     *
+     */
     @Test
     public void TestMiniProject1() {
         scene2.geometries.add(triangle1.setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(300)),

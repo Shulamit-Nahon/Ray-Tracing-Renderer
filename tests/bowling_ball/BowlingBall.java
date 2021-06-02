@@ -20,7 +20,9 @@ public class BowlingBall {
     private Camera camera = new Camera(new Point3D(25, 0, 1000), new Vector(0, 0, -1), new Vector(1, 0, 0)) //
             .setViewPlaneSize(200, 200).setDistance(1000);
 
-
+    /**
+     *
+     */
     @Test
     public void bowlingballTest() {
         scene.geometries.add( //

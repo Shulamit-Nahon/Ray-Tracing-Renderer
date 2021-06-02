@@ -49,14 +49,32 @@ public class MIniProject1 {
     Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
             .setViewPlaneSize(150, 150).setDistance(1000);
     @Test
-    public void TesttrianglesSpot() {
+    public void TestMiniProject1() {
         scene2.geometries.add(triangle1.setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(300)),
                 new Sphere(50, new Point3D(0, 0, -50)) //
-                        .setEmission(new Color(java.awt.Color.BLUE)) //
+                        .setEmission(new Color(java.awt.Color.RED)) //
                         .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
                 new Sphere(25, new Point3D(0, 0, -50)) //
+                        .setEmission(new Color(java.awt.Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)),
+                new Sphere(20, new Point3D(50, 0, 0)) //
+                        .setEmission(new Color(java.awt.Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
+                new Sphere(15, new Point3D(70, 0, 0)) //
                         .setEmission(new Color(java.awt.Color.RED)) //
-                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)));
+                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
+                new Sphere(20, new Point3D(-50, 0, 0)) //
+                        .setEmission(new Color(java.awt.Color.BLACK)) //
+                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
+                 new Sphere(15, new Point3D(-70, 0, 0)) //
+                     .setEmission(new Color(java.awt.Color.RED)) //
+                     .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
+                new Triangle( //
+                        new Point3D(50, 50, 50), new Point3D(-15, 15, 15), new Point3D(-75, -75, 150))
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Triangle( //
+                        new Point3D(-150, -100, -300), new Point3D(-50, 50, 1), new Point3D(-150, 150                  , -150))
+                        .setEmission(new Color(java.awt.Color.YELLOW)));
 
         scene2.lights.add(new SpotLight(new Color(500, 250, 250), new Point3D(10, -10, -130), new Vector(-2, -2, -1))
                 .setKl(0.0001).setKq(0.000005));

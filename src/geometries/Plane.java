@@ -124,4 +124,9 @@ public class Plane extends Geometry {
         }
         return null;
     }
+
+    @Override
+    public void findMinMaxForBounding() {
+
+    }
 }

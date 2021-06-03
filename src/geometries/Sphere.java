@@ -146,35 +146,80 @@ public class Sphere extends RadialGeometry {
         }
         return null;
 }
-//
-//        if(alignZero(t1)<0 && alignZero(t2)<0 ){
-//            return null;
-//        }
-//
-//        if ((t1 > 0 && t2 > 0) && (alignZero(t1 - maxDistance) <= 0) && (alignZero(t2 - maxDistance) <= 0)) {
-////            //the first point and the second point
-//
-//            return List.of(new GeoPoint(this, ray.getTargetPoint(t1)), new GeoPoint(this, ray.getTargetPoint(t2)));
-//        }
-//
-//       // if (alignZero(maxDistance-t1)>=0 && alignZero(maxDistance-t2)>=0) {
-//       //     return List.of(new GeoPoint(this,ray.getTargetPoint(t1)), new GeoPoint(this,ray.getTargetPoint(t2)));
-//      //  }
-//       else if (alignZero(maxDistance-t1)>0) {
-//            return List.of(new GeoPoint(this,ray.getTargetPoint(t1)));
-//        }
-//       else if (alignZero(maxDistance-t2)>0) {
-//            return List.of(new GeoPoint(this,ray.getTargetPoint(t2)));
-//        }
-//        return null;
-//    }
+
+
+
+
 
     /**
-     * defult
-     * @param ray
+     * find 6 minimum and maximum value of the shape
+     */
+    public void findMinMaxForBounding() {
+        Geometries boundingGeo=new Geometries();
+        boundingGeo.add(new Polygon(
+                new Point3D(center.getX()+radius,center.getY(),center.getZ()+radius),
+                new Point3D(center.getX()+radius,center.getY(),center.getZ()-radius),
+                new Point3D(center.getX(), center.getY()+radius,center.getZ()+radius),
+                new Point3D(center.getX(), center.getY()+radius,center.getZ()-radius)));
+}
+
+    /**
+     * A function that finds whether there are intersections with the boundary that warmed the bodies
+     * @param r
      * @return
      */
-   // public List<Point3D> findIntersections(Ray ray){
-       // return null;
-  //  }
+    public boolean intersect(Ray r){
+        double rayPoX=r.getpOrigin().getX();
+        double rayPoY=r.getpOrigin().getY();
+        double rayPoZ=r.getpOrigin().getZ();
+        double tmin = (minX - rayPoX) / r.getDirection().getHead().getX();
+        double tmax = (maxX - rayPoX) / r.getDirection().getHead().getX();
+        if (tmin > tmax){
+            //swap(tmin, tmax);
+            double temp=tmin;
+            tmin=tmax;
+            tmax=temp;
+        }
+
+        double tymin = (minY - rayPoY) / r.getDirection().getHead().getY();
+        double tymax = (maxY -rayPoY) /  r.getDirection().getHead().getY();
+
+        if (tymin > tymax){
+            //swap(tymin, tymax);
+            double temp=tymin;
+            tymin=tymax;
+            tymax=temp;
+        }
+
+        if ((tmin > tymax) || (tymin > tmax))
+            return false;
+
+        if (tymin > tmin)
+            tmin = tymin;
+
+        if (tymax < tmax)
+            tmax = tymax;
+
+        double tzmin = (minZ -rayPoZ) / r.getDirection().getHead().getZ();
+        double tzmax = (maxZ - rayPoZ) /  r.getDirection().getHead().getZ();
+
+        if (tzmin > tzmax){
+            //swap(tzmin, tzmax);
+            double temp=tzmin;
+            tzmin=tzmax;
+            tzmax=temp;
+        }
+
+        if ((tmin > tzmax) || (tzmin > tmax))
+            return false;
+
+        if (tzmin > tmin)
+            tmin = tzmin;
+
+        if (tzmax < tmax)
+            tmax = tzmax;
+
+        return true;
+    }
+
 }

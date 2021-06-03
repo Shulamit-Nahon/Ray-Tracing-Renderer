@@ -10,7 +10,7 @@ import java.util.List;
  * A Geometries class
  * defined by its a list intersectables
  */
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
 
     List<Intersectable> intersectables = null;
 
@@ -57,4 +57,38 @@ public class Geometries implements Intersectable {
         }
         return result;
     }
+
+    /**
+     * A function that passes the maximum and minimum points in all the bodies in the geometries and finds the maximum and minimum values
+     */
+    @Override
+    public void findMinMaxForBounding() {
+        for (Intersectable item : this.intersectables){
+        if(item.maxX>maxX){
+            maxX=item.maxX;
+        }
+        if(item.maxY>maxY){
+            maxY=item.maxY;
+        }
+        if(item.maxZ>maxZ){
+            maxZ=item.maxZ;
+        }
+        if(item.minX<minX){
+            minX=item.minX;
+        }
+        if(item.minY<minY){
+            minY=item.minY;
+        }
+        if(item.minZ<minZ){
+            minZ=item.minZ;
+        }
+    }
+    }
+
+    @Override
+    public boolean intersect(Ray r) {
+        return false;
+    }
+
+
 }

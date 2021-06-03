@@ -8,7 +8,7 @@ import primitives.Vector;
 /**
  * interface for Geometries that have a normal
  */
-public abstract class Geometry implements Intersectable {
+public abstract class Geometry extends Intersectable {
 
     protected Color _emission = Color.BLACK;
     private Material _material = new Material();

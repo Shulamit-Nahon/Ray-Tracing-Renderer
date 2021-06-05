@@ -105,13 +105,14 @@ public class Sphere extends RadialGeometry {
 
     /**
      * find Geometry Intersections
+     *
      * @param ray
      * @return Geometry Intersections points
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         if (ray.getpOrigin().equals(center)) {
-            return List.of(new GeoPoint(this,ray.getTargetPoint(radius)));////
+            return List.of(new GeoPoint(this, ray.getTargetPoint(radius)));////
         }
 
         Vector U = center.subtract(ray.getpOrigin());
@@ -145,50 +146,50 @@ public class Sphere extends RadialGeometry {
             return List.of(new GeoPoint(this, ray.getTargetPoint(t2)));
         }
         return null;
-}
-
-
-
+    }
 
 
     /**
      * find 6 minimum and maximum value of the shape
      */
-    public void findMinMaxForBounding() {
-        Geometries boundingGeo=new Geometries();
-        boundingGeo.add(new Polygon(
-                new Point3D(center.getX()+radius,center.getY(),center.getZ()+radius),
-                new Point3D(center.getX()+radius,center.getY(),center.getZ()-radius),
-                new Point3D(center.getX(), center.getY()+radius,center.getZ()+radius),
-                new Point3D(center.getX(), center.getY()+radius,center.getZ()-radius)));
-}
+    protected void findMinMaxForBounding() {
+        maxX = center.getX()+radius;
+        maxY = center.getY()+radius;
+        maxZ = center.getZ()+radius;
+
+        minX = center.getX()-radius;
+        minY = center.getY()-radius;
+        minZ = center.getZ()-radius;
+
+    }
 
     /**
      * A function that finds whether there are intersections with the boundary that warmed the bodies
+     *
      * @param r
      * @return
      */
-    public boolean intersect(Ray r){
-        double rayPoX=r.getpOrigin().getX();
-        double rayPoY=r.getpOrigin().getY();
-        double rayPoZ=r.getpOrigin().getZ();
+    public boolean intersect(Ray r) {
+        double rayPoX = r.getpOrigin().getX();
+        double rayPoY = r.getpOrigin().getY();
+        double rayPoZ = r.getpOrigin().getZ();
         double tmin = (minX - rayPoX) / r.getDirection().getHead().getX();
         double tmax = (maxX - rayPoX) / r.getDirection().getHead().getX();
-        if (tmin > tmax){
+        if (tmin > tmax) {
             //swap(tmin, tmax);
-            double temp=tmin;
-            tmin=tmax;
-            tmax=temp;
+            double temp = tmin;
+            tmin = tmax;
+            tmax = temp;
         }
 
         double tymin = (minY - rayPoY) / r.getDirection().getHead().getY();
-        double tymax = (maxY -rayPoY) /  r.getDirection().getHead().getY();
+        double tymax = (maxY - rayPoY) / r.getDirection().getHead().getY();
 
-        if (tymin > tymax){
+        if (tymin > tymax) {
             //swap(tymin, tymax);
-            double temp=tymin;
-            tymin=tymax;
-            tymax=temp;
+            double temp = tymin;
+            tymin = tymax;
+            tymax = temp;
         }
 
         if ((tmin > tymax) || (tymin > tmax))
@@ -200,14 +201,14 @@ public class Sphere extends RadialGeometry {
         if (tymax < tmax)
             tmax = tymax;
 
-        double tzmin = (minZ -rayPoZ) / r.getDirection().getHead().getZ();
-        double tzmax = (maxZ - rayPoZ) /  r.getDirection().getHead().getZ();
+        double tzmin = (minZ - rayPoZ) / r.getDirection().getHead().getZ();
+        double tzmax = (maxZ - rayPoZ) / r.getDirection().getHead().getZ();
 
-        if (tzmin > tzmax){
+        if (tzmin > tzmax) {
             //swap(tzmin, tzmax);
-            double temp=tzmin;
-            tzmin=tzmax;
-            tzmax=temp;
+            double temp = tzmin;
+            tzmin = tzmax;
+            tzmax = temp;
         }
 
         if ((tmin > tzmax) || (tzmin > tmax))

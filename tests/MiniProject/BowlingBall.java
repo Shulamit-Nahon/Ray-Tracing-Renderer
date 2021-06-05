@@ -1,11 +1,8 @@
-package bowling_ball;
+package MiniProject;
 
 import elements.Camera;
-import elements.DirectionalLight;
-import elements.PointLight;
 import elements.SpotLight;
 import geometries.Sphere;
-import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.Color;
 import primitives.Material;

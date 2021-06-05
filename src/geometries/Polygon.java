@@ -196,12 +196,13 @@ public class Polygon extends Geometry {
      */
     public void findMinMaxForBounding()
     {
-//        double maxX=Double.NEGATIVE_INFINITY;
-//        double maxY=Double.NEGATIVE_INFINITY;
-//        double maxZ=Double.NEGATIVE_INFINITY;
-//        double minX=Double.POSITIVE_INFINITY;
-//        double minY=Double.POSITIVE_INFINITY;
-//        double minZ=Double.POSITIVE_INFINITY;
+         maxX=Double.NEGATIVE_INFINITY;
+         maxY=Double.NEGATIVE_INFINITY;
+         maxZ=Double.NEGATIVE_INFINITY;
+         minX=Double.POSITIVE_INFINITY;
+         minY=Double.POSITIVE_INFINITY;
+         minZ=Double.POSITIVE_INFINITY;
+
         for(int i=0;i<vertices.size();i++)
         {
           if(vertices.get(i).getX()<minX)  {

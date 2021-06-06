@@ -13,17 +13,22 @@ public class Render {
     Camera _camera = null;
     RayTracerBase _rayTracerBase = null;
 
+    private int subPixels = 3; //the num to divide each pixel
+
+    public void setSubPixels(int subPixels) {
+        this.subPixels = subPixels;
+    }
+
+    public int getSubPixels() {
+        return subPixels;
+    }
+
     //chaining methods
     public Render setImageWriter(ImageWriter imageWriter) {
         _imageWriter = imageWriter;
         return this;
     }
 
-    /* public Render setScene(Scene scene) {
-         _scene = scene;
-         return this;
-     }
- */
     public Render setCamera(Camera camera) {
         _camera = camera;
         return this;
@@ -39,9 +44,6 @@ public class Render {
             if (_imageWriter == null) {
                 throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
             }
-            // if (_scene == null) {
-            //    throw new MissingResourceException("missing resource", Scene.class.getName(), "");
-            // }
             if (_camera == null) {
                 throw new MissingResourceException("missing resource", Camera.class.getName(), "");
             }
@@ -49,27 +51,40 @@ public class Render {
                 throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
             }
 
-            //rendering the image
-            int nX = _imageWriter.getNx()*2;
-            int nY = _imageWriter.getNy()*2;
-            for (int i = 0; i < nY-1; i+=2) {
-                for (int j = 0; j < nX-1; j+=2) {
-                    Ray rays[] = {_camera.constructRayThroughPixel(nX, nY, j+1, i+1),
-                                 _camera.constructRayThroughPixel(nX, nY, j, i+1),
-                                 _camera.constructRayThroughPixel(nX, nY, j+1, i),
-                                 _camera.constructRayThroughPixel(nX, nY, j, i)};
+            _rayTracerBase._scene.geometries.constructHierarchy();
 
-                    Color pixelColor=Color.BLACK;
+            //rendering the image
+            int nX = _imageWriter.getNx() * subPixels;
+            int nY = _imageWriter.getNy() * subPixels;
+            for (int i = 0; i < nY; i += subPixels) {
+                for (int j = 0; j < nX; j += subPixels) {
+
+                    Ray[] rays = raysThroughPixel(subPixels, nX, nY, i, j);
+
+                    Color pixelColor = Color.BLACK;
                     for (Ray ray : rays) {
-                         pixelColor = pixelColor.add( _rayTracerBase.traceRay(ray));
+                        pixelColor = pixelColor.add(_rayTracerBase.traceRay(ray));
                     }
 
-                    _imageWriter.writePixel(j/2, i/2, pixelColor.reduce(4));
+                    _imageWriter.writePixel(j / subPixels, i / subPixels, pixelColor.reduce(subPixels*subPixels));
                 }
             }
         } catch (MissingResourceException e) {
             throw new UnsupportedOperationException("Not implemented yet" + e.getClassName());
         }
+    }
+
+    //creates array of rays to each pixel
+    private Ray[] raysThroughPixel(int subPixels, int nX, int nY, int x, int y) {
+
+        Ray rays[] = new Ray[subPixels * subPixels];
+        int index = 0;
+        for (int i = 0; i < subPixels; i++) {
+            for (int j = 0; j < subPixels; j++) {
+                rays[index++] = _camera.constructRayThroughPixel(nX, nY, y + i, x + j);
+            }
+        }
+        return rays;
     }
 
 

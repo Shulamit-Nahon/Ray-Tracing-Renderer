@@ -216,13 +216,13 @@ public class ShadowTests {
                 new Plane(new Point3D(1500, -1500, -1500),new Vector(0,-30,-20))
                         .setEmission(new Color(20, 20, 20))
                         .setMaterial(new Material().setKr(0.5)),
-                new Triangle(new Point3D(1500, -1500, -1500), new Point3D(-1500, 1500, -1500),
-                        new Point3D(-1500, -1500, -2000)) //
-                        .setEmission(new Color(20, 20, 20)) //
-                        .setMaterial(new Material().setKr(0.5)),
+                new Triangle(new Point3D(-150, -150, -115), new Point3D(150, -150, -135), new Point3D(75, 75, -150)) //
+//                        .setEmission(new Color(20, 20, 20)) //
+                        .setMaterial(new Material().setSpecular(0.8).setShininess(60)),
                 new Sphere(200, new Point3D(-950, -900, -1000)) //
                         .setEmission(new Color(100, 20, 20)), ////
                 new Triangle(new Point3D(-150, -150, -115), new Point3D(-70, 70, -140), new Point3D(75, 75, -150)) //
+//                        .setEmission(new Color(20, 20, 20)) //
                         .setMaterial(new Material().setSpecular(0.8).setShininess(60)), //
                 new Sphere(30, new Point3D(0, 0, -115)) //
                         .setEmission(new Color(java.awt.Color.BLUE)) //

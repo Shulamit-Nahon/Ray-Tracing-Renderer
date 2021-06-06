@@ -1,4 +1,4 @@
-package bowling_ball;
+package MiniProject;
 
 import elements.AmbientLight;
 import elements.Camera;
@@ -11,7 +11,7 @@ import renderer.RayTracerBasic;
 import renderer.Render;
 import scene.Scene;
 
-public class MIniProject1 {
+public class MIniProject_1 {
 
     private static Geometries square = new Geometries(new Polygon(new Point3D(0,0,-50),new Point3D(50,0,-100),new Point3D(50,50,-150),new Point3D(0,50,-100))
             .setEmission(new Color(java.awt.Color.BLUE)) //

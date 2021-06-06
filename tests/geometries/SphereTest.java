@@ -62,7 +62,7 @@ class SphereTest {
                 "ERROR - TC03: Ray's line starts inside the sphere");
 
 
-        // TC04: Ray starts after the sphere (0 points)
+        // TC04: Ray starts after the sphere (0 points).
         assertEquals(null,
                 sphere1.findIntersections(new Ray(
                         new Point3D(1, -2, 0),

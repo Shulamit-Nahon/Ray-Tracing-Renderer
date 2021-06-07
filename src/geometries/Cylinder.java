@@ -16,6 +16,9 @@ public class Cylinder extends Tube {
     final double height; //cylinder height value, radius and ray
     Plane base1;
     Plane base2;
+    double rad;//The width(rad*2) of the Cylinder
+
+
 
     /**
      * @return cylinder height value
@@ -45,6 +48,7 @@ public class Cylinder extends Tube {
      */
     public Cylinder(Ray ray, double rad, double height) {
         super( rad,ray);
+        this.rad=rad;
         this.height = height;
         Vector v = ray.getDirection();
         Point3D o1 = ray.getpOrigin();
@@ -169,5 +173,13 @@ public class Cylinder extends Tube {
         }
         resultList.get(0).geometry = this;
         return resultList;
+    }
+
+    @Override
+    public void findMinMaxForBounding() {
+
+//       maxX= this.axisRay.getpOrigin().getX()+radius;
+//       maxY=this.axisRay.getpOrigin().getY()+radius;
+//       maxZ=this.axisRay.getpOrigin().getZ()+radius;
     }
 }

@@ -75,8 +75,8 @@ public class MIniProject_1 {
                         .setEmission(new Color(java.awt.Color.BLACK)),
                 new Triangle( //
                         new Point3D(-150, -100, -300), new Point3D(-50, 50, 1), new Point3D(-150, 150                  , -150))
-                        .setEmission(new Color(java.awt.Color.YELLOW)));
-               // new Cylinder(new Ray(new Point3D(20,20,20),new Vector(100,20,-40)),60,50));
+                        .setEmission(new Color(java.awt.Color.YELLOW))
+                );
 
         scene2.lights.add(new SpotLight(new Color(500, 250, 250), new Point3D(10, -10, -130), new Vector(-2, -2, -1))
                 .setKl(0.0001).setKq(0.000005));

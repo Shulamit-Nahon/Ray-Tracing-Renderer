@@ -30,8 +30,8 @@ public class PingPong {
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)),
                 new Cylinder(new Ray(new Point3D(-4,-5,-1),new Vector(2,-1,1)),40,50)
                 .setEmission(new Color(java.awt.Color.BLUE))
-                .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5)),
-                new Sphere(40,new Point3D(-30,30,30))
+                .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5))
+                //new Sphere(40,new Point3D(-30,30,30))
 
         );
         scene.lights.add(

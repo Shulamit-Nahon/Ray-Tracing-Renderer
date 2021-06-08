@@ -174,12 +174,22 @@ public class Cylinder extends Tube {
         resultList.get(0).geometry = this;
         return resultList;
     }
-
+    /**
+     * find 6 minimum and maximum value of the cylinder
+     */
     @Override
     public void findMinMaxForBounding() {
-
-//       maxX= this.axisRay.getpOrigin().getX()+radius;
-//       maxY=this.axisRay.getpOrigin().getY()+radius;
-//       maxZ=this.axisRay.getpOrigin().getZ()+radius;
+        Point3D bottomCapCenter= axisRay.getpOrigin();
+        Point3D upperCapCenter=axisRay.getTargetPoint(height);
+        //get minimum & maximum x value for the containing box
+        minX=Math.min(bottomCapCenter.getX(),upperCapCenter.getX())- radius;
+        maxX=Math.max(bottomCapCenter.getX(),upperCapCenter.getX())+radius;
+        //get minimum & maximum y value for the containing box
+        minY=Math.min(bottomCapCenter.getY(),upperCapCenter.getY())-radius;
+        maxY=Math.max(bottomCapCenter.getY(),upperCapCenter.getY())+radius;
+        //get minimum & maximum z value for the containing box
+        minZ=Math.min(bottomCapCenter.getZ(),upperCapCenter.getZ())-radius;
+        maxZ=Math.max(bottomCapCenter.getZ(),upperCapCenter.getZ())+radius;
+//
     }
 }

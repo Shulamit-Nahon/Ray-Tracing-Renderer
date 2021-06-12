@@ -82,7 +82,12 @@ public class Plane extends Geometry {
         return normal;
     }
 
-
+    /**
+     * find Intersections points with the ray and plane
+     * @param ray
+     * @param maxDistance
+     * @return  Intersections points with the ray and plane
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D P0 = ray.getpOrigin();

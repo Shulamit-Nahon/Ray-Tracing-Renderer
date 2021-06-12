@@ -72,8 +72,8 @@ public class Polygon extends Geometry {
             // Test the consequent edges have
             edge1 = edge2;
             edge2 = vertices[i].subtract(vertices[i - 1]);
-            if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
-                throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
+           // if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
+              //  throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
     }
 
@@ -88,9 +88,9 @@ public class Polygon extends Geometry {
     }
 
     /**
-     *
+     *  find geometry Intersections points with the ray and polygon
      * @param ray
-     * @return
+     * @return geometry Intersections points with the ray and polygon
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
@@ -224,16 +224,6 @@ public class Polygon extends Geometry {
                 maxZ=vertices.get(i).getY();
           }
         }
-//        Geometries BoundingGeo=new Geometries();
-//        BoundingGeo.add(new Polygon(
-//                new Point3D(maxX,0,0),
-//                new Point3D(minX,0,0),
-//                new Point3D(0,minY,0),
-//                new Point3D(0,maxY,0),
-//                new Point3D(0,0,maxZ),
-//                new Point3D(0,0,minZ)));
-        //return BoundingGeo;
-        //intersect()
     }
 }
 

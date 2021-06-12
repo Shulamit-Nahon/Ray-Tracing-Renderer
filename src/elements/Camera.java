@@ -43,9 +43,9 @@ public class Camera {
 
     /**
      * constructor
-     * @param p0
-     * @param vTo
-     * @param vUp
+     * @param p0 start point
+     * @param vTo vector to
+     * @param vUp vector up
      */
     public Camera(Point3D p0, Vector vTo, Vector vUp) {
         _p0 = p0;

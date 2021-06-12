@@ -10,13 +10,23 @@ import primitives.Vector;
  */
 public abstract class Geometry extends Intersectable {
 
+    // emission color of the Geometry
     protected Color _emission = Color.BLACK;
+    // Material of the Geometry
     private Material _material = new Material();
 
+    /**
+     * @return the Material of the Geometry
+     */
     public Material getMaterial() {
         return _material;
     }
 
+    /**
+     * set the Material of the Geometry
+     * @param material
+     * @return the Geometry
+     */
     public Geometry setMaterial(Material material) {
         _material = material;
         return this;

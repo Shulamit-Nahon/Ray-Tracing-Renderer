@@ -6,8 +6,12 @@ import primitives.Vector;
 
 import static primitives.Util.alignZero;
 
+/**
+ * class for spot light
+ */
 public class SpotLight extends PointLight  {
 
+    //direction of Spot Light
     private final Vector _direction;
     /**
      * constructor for Spot Light

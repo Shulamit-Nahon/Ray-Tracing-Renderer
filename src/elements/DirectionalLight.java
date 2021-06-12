@@ -9,6 +9,7 @@ import primitives.Vector;
  */
 public class DirectionalLight extends Light implements LightSource{
 
+    //the direction of light
     private Vector _direction;
     /**
      * constructor for light
@@ -38,6 +39,11 @@ public class DirectionalLight extends Light implements LightSource{
         return _direction;
     }
 
+    /**
+     * get the Distance between light source to point
+     * @param point
+     * @return distance between light source to point
+     */
     @Override
     public double getDistance(Point3D point) {
         return Double.POSITIVE_INFINITY;

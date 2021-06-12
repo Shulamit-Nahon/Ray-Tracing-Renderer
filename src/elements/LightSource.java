@@ -10,7 +10,7 @@ import primitives.*;
 public interface LightSource {
 
     /**
-     *
+     *get Intensity of light
      * @param p
      * @return the intensity of light source in point p
      */
@@ -23,5 +23,10 @@ public interface LightSource {
      */
     public Vector getL(Point3D p);
 
+    /**
+     *get the Distance between light source to point
+     * @param point
+     * @return Distance between light source to point
+     */
    public double getDistance(Point3D point);
 }

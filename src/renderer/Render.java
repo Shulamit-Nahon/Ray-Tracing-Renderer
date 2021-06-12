@@ -7,6 +7,12 @@ import primitives.Ray;
 
 import java.util.MissingResourceException;
 
+/**
+ * This class is responsible for communicating between a {@link RayTracerBasic} and an {@link ImageWriter}.
+ *
+ * @author lea haimovich
+ * @author shulamit nahon
+ */
 public class Render {
 
     ImageWriter _imageWriter = null;
@@ -15,10 +21,18 @@ public class Render {
 
     private int subPixels = 3; //the num to divide each pixel
 
+    /**
+     *set Sub Pixels
+     * @param subPixels
+     */
     public void setSubPixels(int subPixels) {
         this.subPixels = subPixels;
     }
 
+    /**
+     * get Sub Pixels
+     * @return number of Sub Pixels
+     */
     public int getSubPixels() {
         return subPixels;
     }
@@ -29,16 +43,29 @@ public class Render {
         return this;
     }
 
+    /**
+     * set Camera
+     * @param camera
+     * @return this Render
+     */
     public Render setCamera(Camera camera) {
         _camera = camera;
         return this;
     }
 
+    /**
+     * set Ray Tracer
+     * @param rayTracer
+     * @return this Render
+     */
     public Render setRayTracer(RayTracerBase rayTracer) {
         _rayTracerBase = rayTracer;
         return this;
     }
 
+    /**
+     *
+     */
     public void renderImage() {
         try {
             if (_imageWriter == null) {
@@ -87,7 +114,11 @@ public class Render {
         return rays;
     }
 
-
+    /**
+     * print the final grid
+     * @param interval
+     * @param color
+     */
     public void printGrid(int interval, Color color) {
         int nX = _imageWriter.getNx();
         int nY = _imageWriter.getNy();
@@ -104,6 +135,9 @@ public class Render {
         }
     }
 
+    /**
+     *
+     */
     public void writeToImage() {
         _imageWriter.writeToImage();
     }

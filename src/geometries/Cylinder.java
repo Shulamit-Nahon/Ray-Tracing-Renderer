@@ -108,9 +108,20 @@ public class Cylinder extends Tube {
         return check.normalize();
     }
 
-
+    /**
+     * find Intersections points with the ray and cylinder
+     * @param ray
+     * @return Intersections points with the ray and cylinder
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) { return null ;}
+
+    /**
+     * find Geometry Intersections points with the ray and cylinder
+     * @param ray
+     * @param maxDistance
+     * @return Geometry Intersections with the ray and cylinder
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         GeoPoint p1 = null;

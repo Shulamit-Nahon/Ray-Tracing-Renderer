@@ -147,6 +147,9 @@ public class Tube extends RadialGeometry  {
         return alignZero(t1 - maxDistance) < 0 && t1 > 0 ? List.of(new GeoPoint(this, ray.getTargetPoint(t1))) : null;
     }
 
+    /**
+     *  find 6 minimum and maximum value of the shape
+     */
     @Override
     public void findMinMaxForBounding() {
 

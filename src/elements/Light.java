@@ -9,6 +9,7 @@ import java.util.List;
  */
 abstract public class Light {
 
+    // intensity color
     protected Color _intensity;
 
     /**
@@ -18,7 +19,10 @@ abstract public class Light {
     protected Light(Color intensity){
         this._intensity=intensity;
     }
-
+    /**
+     * get Intensity of light
+     * @return Intensity of light
+     */
     public Color getIntensity() {
         return _intensity;
     }

@@ -4,7 +4,9 @@ import primitives.Point3D;
 import primitives.Ray;
 
 import java.util.function.Predicate;
-
+/*
+class for Demarcation of geometries
+ */
 public abstract class Borderable {
 
 //max point coordinate

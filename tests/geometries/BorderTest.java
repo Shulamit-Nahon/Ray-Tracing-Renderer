@@ -16,7 +16,7 @@ import scene.Scene;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BorderableTest {
+class BorderTest {
 
     private Scene scene = new Scene("Test scene");
     private Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //

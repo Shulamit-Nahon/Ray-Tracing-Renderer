@@ -34,6 +34,8 @@ public class Plane extends Geometry {
         Vector v3 = v1.crossProduct(V2);
         v3.normalize();
         normal = v3;
+
+        border=Border.INFINITE;
     }
 
     /**

@@ -31,6 +31,8 @@ public class Sphere extends RadialGeometry {
     public Sphere(double radius, Point3D cenetr) {
         super(radius);
         this.center = cenetr;
+
+        border = findMinMaxForBounding();
     }
 
     @Override
@@ -55,53 +57,6 @@ public class Sphere extends RadialGeometry {
         Vector v = point.subtract(center);
         return v.normalize();
     }
-
-
-//    @Override
-//    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
-//        //calculating varieables for the final formula
-//        Point3D P0 = ray.getpOrigin();
-//        Vector V = ray.getDirection();
-//        Point3D O = cenetr;
-//        if (P0.equals(cenetr)) {
-//            return List.of(new GeoPoint(this, cenetr.add(V.scale(radius))));
-//        }
-//        Vector U = O.subtract(P0);
-//        double tm = V.dotProduct(U);
-//        double d = alignZero(Math.sqrt(alignZero(U.lengthSquared() - tm * tm)));
-//        //there is no intersaction
-//        //
-//        if (d >= radius) {
-//            return null;
-//        }
-//        double th = alignZero(Math.sqrt(alignZero(radius * radius - d * d)));
-//        double t1 = alignZero(tm - th);
-//        double t2 = alignZero(tm + th);
-//        // if P is on the surface---
-//        if (isZero(th)) {
-//            return null;
-//        }
-//
-//        //in case of 2 intersaction points
-//        if ((t1 > 0 && t2 > 0) && (alignZero(t1 - maxDistance) <= 0) && (alignZero(t2 - maxDistance) <= 0)) {
-////            //the first point and the second point
-//            return List.of(new GeoPoint(this, ray.getTargetPoint(t1)), new GeoPoint(this, ray.getTargetPoint(t2)));
-//        }
-//        //in case of 1 intersaction points
-//        if (t1 > 0 && (alignZero(t1 - maxDistance) <= 0)) {
-//
-//            return List.of(new GeoPoint(this, ray.getTargetPoint(t1)));
-//        }
-//        //in case of 1 intersaction points
-//        if (t2 > 0 && (alignZero(t2 - maxDistance) <= 0)) {
-//
-//            return List.of(new GeoPoint(this, ray.getTargetPoint(t2)));
-//        }
-//        return null;
-//
-//    }
-//
-
 
     /**
      * find Geometry Intersections
@@ -152,75 +107,15 @@ public class Sphere extends RadialGeometry {
     /**
      * find 6 minimum and maximum value of the shape
      */
-    protected void findMinMaxForBounding() {
-        maxX = center.getX()+radius;
-        maxY = center.getY()+radius;
-        maxZ = center.getZ()+radius;
+    protected Border findMinMaxForBounding() {
+        double maxX = center.getX() + radius;
+        double maxY = center.getY() + radius;
+        double maxZ = center.getZ() + radius;
 
-        minX = center.getX()-radius;
-        minY = center.getY()-radius;
-        minZ = center.getZ()-radius;
+        double minX = center.getX() - radius;
+        double minY = center.getY() - radius;
+        double minZ = center.getZ() - radius;
 
+        return new Border(maxX, maxY, maxZ, minX, minY, minZ);
     }
-
-    /**
-     * A function that finds whether there are intersections with the boundary that warmed the bodies
-     *
-     * @param r
-     * @return
-     */
-    public boolean intersect(Ray r) {
-        double rayPoX = r.getpOrigin().getX();
-        double rayPoY = r.getpOrigin().getY();
-        double rayPoZ = r.getpOrigin().getZ();
-        double tmin = (minX - rayPoX) / r.getDirection().getHead().getX();
-        double tmax = (maxX - rayPoX) / r.getDirection().getHead().getX();
-        if (tmin > tmax) {
-            //swap(tmin, tmax);
-            double temp = tmin;
-            tmin = tmax;
-            tmax = temp;
-        }
-
-        double tymin = (minY - rayPoY) / r.getDirection().getHead().getY();
-        double tymax = (maxY - rayPoY) / r.getDirection().getHead().getY();
-
-        if (tymin > tymax) {
-            //swap(tymin, tymax);
-            double temp = tymin;
-            tymin = tymax;
-            tymax = temp;
-        }
-
-        if ((tmin > tymax) || (tymin > tmax))
-            return false;
-
-        if (tymin > tmin)
-            tmin = tymin;
-
-        if (tymax < tmax)
-            tmax = tymax;
-
-        double tzmin = (minZ - rayPoZ) / r.getDirection().getHead().getZ();
-        double tzmax = (maxZ - rayPoZ) / r.getDirection().getHead().getZ();
-
-        if (tzmin > tzmax) {
-            //swap(tzmin, tzmax);
-            double temp = tzmin;
-            tzmin = tzmax;
-            tzmax = temp;
-        }
-
-        if ((tmin > tzmax) || (tzmin > tmax))
-            return false;
-
-        if (tzmin > tmin)
-            tmin = tzmin;
-
-        if (tzmax < tmax)
-            tmax = tzmax;
-
-        return true;
-    }
-
 }

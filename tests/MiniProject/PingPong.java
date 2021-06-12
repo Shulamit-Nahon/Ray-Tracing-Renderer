@@ -6,6 +6,7 @@ import elements.SpotLight;
 import geometries.Cylinder;
 import geometries.Polygon;
 import geometries.Sphere;
+import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import renderer.ImageWriter;
@@ -25,12 +26,12 @@ public class PingPong {
     public void TestPingPong() {
         scene.setBackground(new Color(java.awt.Color.white));
         scene.geometries.add( //
-               new Cylinder(new Ray(new Point3D(0,-5,0),new Vector(0,3,0)),15,60)
-                       .setEmission(new Color(java.awt.Color.RED))
+                new Cylinder(new Ray(new Point3D(0, -5, 0), new Vector(0, 3, 0)), 15, 60)
+                        .setEmission(new Color(java.awt.Color.RED))
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)),
-                new Cylinder(new Ray(new Point3D(-4,-5,-1),new Vector(2,-1,1)),40,50)
-                .setEmission(new Color(java.awt.Color.BLUE))
-                .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5))
+                new Cylinder(new Ray(new Point3D(-4, -5, -1), new Vector(2, -1, 1)), 40, 50)
+                        .setEmission(new Color(java.awt.Color.BLUE))
+                        .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5))
                 //new Sphere(40,new Point3D(-30,30,30))
 
         );
@@ -53,30 +54,30 @@ public class PingPong {
     public void Testping_pong_background() {
         scene.setBackground(new Color(java.awt.Color.white));
         scene.geometries.add( //
-               new Polygon(new Point3D(52,-64,0),
-                       new Point3D(103,-1,0),
-                       new Point3D(0,120,0),
-                       new Point3D(-100,48,0))
-                .setEmission(new Color(java.awt.Color.BLUE))
-                       .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
-                new Polygon(new Point3D(-40,91,1),
-                        new Point3D(-42,89,1),
-                        new Point3D(80,-30,1),
-                        new Point3D(81,-28,1)).setEmission(new Color(java.awt.Color.WHITE))
-                .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Polygon(new Point3D(52, -64, 0),
+                        new Point3D(103, -1, 0),
+                        new Point3D(0, 120, 0),
+                        new Point3D(-100, 48, 0))
+                        .setEmission(new Color(java.awt.Color.BLUE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Polygon(new Point3D(-40, 91, 1),
+                        new Point3D(-42, 89, 1),
+                        new Point3D(80, -30, 1),
+                        new Point3D(81, -28, 1)).setEmission(new Color(java.awt.Color.WHITE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
 
-                new Polygon(new Point3D(65,44,1.1),
-                        new Point3D(54,56,1.1),
-                        new Point3D(-21,-10,1.1),
-                        new Point3D(-4,-22.5,1.1))
+                new Polygon(new Point3D(65, 44, 1.1),
+                        new Point3D(54, 56, 1.1),
+                        new Point3D(-21, -10, 1.1),
+                        new Point3D(-4, -22.5, 1.1))
                         .setEmission(new Color(java.awt.Color.BLACK))
                         .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
 
-                new Sphere(4,new Point3D(-44,50,0)) .setEmission(new Color(java.awt.Color.ORANGE))
+                new Sphere(4, new Point3D(-44, 50, 0)).setEmission(new Color(java.awt.Color.ORANGE))
                         .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
-                new Sphere(4,new Point3D(-50,40,0)) .setEmission(new Color(java.awt.Color.ORANGE))
+                new Sphere(4, new Point3D(-50, 40, 0)).setEmission(new Color(java.awt.Color.ORANGE))
                         .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
-                new Sphere(4,new Point3D(-40,40,0)) .setEmission(new Color(java.awt.Color.WHITE))
+                new Sphere(4, new Point3D(-40, 40, 0)).setEmission(new Color(java.awt.Color.WHITE))
                         .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10))
         );
         scene.lights.add(
@@ -87,6 +88,60 @@ public class PingPong {
 
         Render render = new Render(). //
                 setImageWriter(new ImageWriter("ping_pong_background", 400, 400)) //
+                .setCamera(camera) //
+                .setRayTracer(new RayTracerBasic(scene));
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test
+    public void Testping_pong_background2() {
+        scene.setBackground(new Color(java.awt.Color.WHITE));
+        scene.geometries.add( //
+                new Polygon(
+                        new Point3D(10, -120, 0),
+                        new Point3D(65, -1, 0),
+                        new Point3D(-20, 150, 0),
+                        new Point3D(-150, 75, 0))
+                        .setEmission(new Color(java.awt.Color.BLUE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Polygon(
+                        new Point3D(-60, 110, 1),
+                        new Point3D(-61, 108, 1),
+                        new Point3D(40, -50, 1),
+                        new Point3D(41, -48, 1))
+                        .setEmission(new Color(java.awt.Color.WHITE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+//                new Polygon(
+//                        new Point3D(65, 44, 1.1),
+//                        new Point3D(54, 56, 1.1),
+//                        new Point3D(-21, -10, 1.1),
+//                        new Point3D(-4, -22.5, 1.1))
+//                        .setEmission(new Color(java.awt.Color.BLACK))
+//                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
+//
+                new Sphere(4, new Point3D(-44, 50, 0)).setEmission(new Color(java.awt.Color.ORANGE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Sphere(4, new Point3D(-49, 40, 0)).setEmission(new Color(java.awt.Color.ORANGE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Sphere(4, new Point3D(-40, 40, 0)).setEmission(new Color(java.awt.Color.WHITE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+
+                new Triangle(
+                        new Point3D(5, -120, 0),
+                        new Point3D(-120, -150, 0),
+                        new Point3D(-155, 75, 0))
+                        .setEmission(new Color(java.awt.Color.BLACK))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10))
+
+        );
+        scene.lights.add(
+                //new DirectionalLight(new Color())//
+                new SpotLight(new Color(300, 255, 255), new Point3D(400, 0, 600), new Vector(1, 1, -5))//
+                        .setKl(1E-5).setKq(1.5E-7));
+
+        Render render = new Render(). //
+                setImageWriter(new ImageWriter("ping_pong_background2", 400, 400)) //
                 .setCamera(camera) //
                 .setRayTracer(new RayTracerBasic(scene));
         render.renderImage();

@@ -5,6 +5,7 @@ import elements.Camera;
 import primitives.Color;
 import primitives.Ray;
 
+import java.time.Instant;
 import java.util.MissingResourceException;
 
 public class Render {
@@ -15,8 +16,9 @@ public class Render {
 
     private int subPixels = 3; //the num to divide each pixel
 
-    public void setSubPixels(int subPixels) {
+    public Render setSubPixels(int subPixels) {
         this.subPixels = subPixels;
+        return this;
     }
 
     public int getSubPixels() {

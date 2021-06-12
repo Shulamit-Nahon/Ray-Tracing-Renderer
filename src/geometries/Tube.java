@@ -31,6 +31,7 @@ public class Tube extends RadialGeometry  {
     public Tube(double radius, Ray axisRay) {
         super(radius);
         this.axisRay = axisRay;
+        border=Border.INFINITE;
     }
 
     @Override
@@ -60,10 +61,6 @@ public class Tube extends RadialGeometry  {
         return n.normalize();
     }
 
-   // @Override
-  //  public List<Point3D> findIntersections(Ray ray) {
-  //      return null;
- //   }
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Vector vAxis = axisRay.getDirection();
@@ -146,10 +143,4 @@ public class Tube extends RadialGeometry  {
                     : List.of(new GeoPoint(this, ray.getTargetPoint(t2)));
         return alignZero(t1 - maxDistance) < 0 && t1 > 0 ? List.of(new GeoPoint(this, ray.getTargetPoint(t1))) : null;
     }
-
-    @Override
-    public void findMinMaxForBounding() {
-
-    }
-
 }

@@ -27,6 +27,12 @@ public class Ray {
         _direction = direction.normalized();
     }
 
+    /**
+     *  Ray constructor
+     * @param point The point where the ray begins
+     * @param lightDirection The direction of the ray
+     * @param n
+     */
     public Ray(Point3D point, Vector lightDirection, Vector n) {
         Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : - DELTA);
        _pOrigin= point.add(delta);
@@ -63,6 +69,11 @@ public class Ray {
         return _pOrigin.add(_direction.scale(t));
     }
 
+    /**
+     * find Closest Geometry Point with the ray
+     * @param pointlist
+     * @return  Closest Geometry Point with the ray
+     */
     public GeoPoint findClosestGeoPoint(List<GeoPoint> pointlist){
         GeoPoint minPoint = null;
 
@@ -82,6 +93,11 @@ public class Ray {
         return minPoint;
     }
 
+    /**
+     * find Closest  Point with the ray
+     * @param point3DList
+     * @return Closest  Point with the ray
+     */
     public Point3D findClosestPoint(List<Point3D> point3DList){
 
         Point3D minPoint = null;

@@ -73,7 +73,7 @@ public class Polygon extends Geometry {
             edge1 = edge2;
             edge2 = vertices[i].subtract(vertices[i - 1]);
            // if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
-              //  throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
+                //throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
     }
 

@@ -149,10 +149,49 @@ public class PingPong {
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10))
         );
 
-        scene.lights.add(
+        //מחבט
+        scene.geometries.add(
 
-                new SpotLight(new Color(300, 255, 255), new Point3D(400, 0, 600), new Vector(1, 1, -5))//
-                        .setKl(1E-5).setKq(1.5E-7));
+                new Cylinder(new Ray(new Point3D(10,28,7), new Vector(8, -2, 6)), 10, 2)
+                        .setEmission(new Color(java.awt.Color.RED)),
+                new Cylinder(new Ray(new Point3D(10,28,7), new Vector(8, -2, 6)), 11, 2)
+                        .setEmission(new Color(153,76,0)),
+                new Cylinder(new Ray(new Point3D(10, 17, 3), new Vector(0, -12.5, -3)), 2, 15)
+                        .setEmission(new Color(153,76,0))
+                        .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5)),//
+                new Sphere(3,new Point3D(3,14,0)).setEmission(new Color(240,144,71))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+
+                new Cylinder(new Ray(new Point3D(31,-52,7), new Vector(7, 1, 7)), 10, 2)
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Cylinder(new Ray(new Point3D(31,-52,7), new Vector(7, 1, 7)), 11, 2)
+                        .setEmission(new Color(153,76,0)),
+                new Cylinder(new Ray(new Point3D(29, -45, 6), new Vector(-7, 15, 0)), 2, 15)
+                        .setEmission(new Color(153,76,0))
+                        .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5)),
+                new Sphere(3,new Point3D(31,-52,15)).setEmission(new Color(240,144,71))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                new Polygon(new Point3D(-9, 54, 1),
+                        new Point3D(41, -40, 1),
+                        new Point3D(41, -43, 1),
+                        new Point3D(-9, 48, 1)).setEmission(new Color(java.awt.Color.WHITE))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10))
+//                new Polygon(new Point3D(26, 27, 1.1), new Point3D(12, -49, 1.1),
+//                        new Point3D(26, 27, 7.7), new Point3D(12, -49, 7.7))
+//                        .setEmission(new Color(java.awt.Color.BLACK))
+//                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3))
+
+
+        );
+        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
+//        scene.lights.add(
+//                new SpotLight(new Color(java.awt.Color.WHITE), new Point3D(10, -10, -130), new Vector(-2, -2, -1))
+//                        .setKl(0.0001).setKq(0.000005));
+//        scene.lights.add(
+//                new SpotLight(new Color(java.awt.Color.WHITE), new Point3D(400, 0, 600), new Vector(1, 1, -5))//
+//                        .setKl(1E-5).setKq(1.5E-7));
+        scene.lights.add( new SpotLight(new Color(java.awt.Color.WHITE),new Point3D(-100, -100, 500),  new Vector(-1, -1, -2))
+                .setKl(0.0004).setKq(0.0000006));
 
         Render render = new Render(). //
                 setImageWriter(new ImageWriter("ping_pong_background3", 400, 400)) //

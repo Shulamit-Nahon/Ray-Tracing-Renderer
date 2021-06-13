@@ -219,7 +219,7 @@ public class PingPong {
                         .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(100)),
                 new Cylinder(new Ray(new Point3D(-75,40,1),new Vector(-19,14,0)),3,20)
                         .setEmission(new Color(java.awt.Color.BLUE))
-                        .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5))
+                        .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5))//
 
 
 

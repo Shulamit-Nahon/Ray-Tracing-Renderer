@@ -105,7 +105,7 @@ public class PingPong {
                         .setEmission(new Color(java.awt.Color.DARK_GRAY))
                         .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
 
-                new Polygon( //the border of the main polygon..
+                new Polygon( //the border of the main polygon
                         new Point3D(-15, 5, 0),
                         new Point3D(-20, 5, 0),
                         new Point3D(30, -95, 0),

@@ -159,14 +159,14 @@ public class PingPong {
                 new Cylinder(new Ray(new Point3D(10, 17, 3), new Vector(0, -12.5, -3)), 2, 15)
                         .setEmission(new Color(153,76,0))
                         .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5)),//
-                new Sphere(3,new Point3D(3,14,0)).setEmission(new Color(240,144,71))
+                new Sphere(3,new Point3D(3,14,2)).setEmission(new Color(240,144,71))
                         .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
 
-                new Cylinder(new Ray(new Point3D(31,-52,7), new Vector(7, 1, 7)), 10, 2)
+                new Cylinder(new Ray(new Point3D(29,-49,7), new Vector(7, 1, 7)), 10, 2)
                         .setEmission(new Color(java.awt.Color.BLACK)),
-                new Cylinder(new Ray(new Point3D(31,-52,7), new Vector(7, 1, 7)), 11, 2)
+                new Cylinder(new Ray(new Point3D(29,-49,7), new Vector(7, 1, 7)), 11, 2)
                         .setEmission(new Color(153,76,0)),
-                new Cylinder(new Ray(new Point3D(29, -45, 6), new Vector(-7, 15, 0)), 2, 15)
+                new Cylinder(new Ray(new Point3D(29, -39, 6), new Vector(-2, 9, 0)), 2, 15)
                         .setEmission(new Color(153,76,0))
                         .setMaterial(new Material().setShininess(100).setSpecular(0.5).setDiffuse(0.5)),
                 new Sphere(3,new Point3D(31,-52,15)).setEmission(new Color(240,144,71))
@@ -175,12 +175,32 @@ public class PingPong {
                         new Point3D(41, -40, 1),
                         new Point3D(41, -43, 1),
                         new Point3D(-9, 48, 1)).setEmission(new Color(java.awt.Color.WHITE))
-                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10))
-//                new Polygon(new Point3D(26, 27, 1.1), new Point3D(12, -49, 1.1),
-//                        new Point3D(26, 27, 7.7), new Point3D(12, -49, 7.7))
+                        .setMaterial(new Material().setDiffuse(0.5).setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+//                new Polygon(//רשת שחורה
+//                        new Point3D(40.58158,27.67025,10), new Point3D(26.73963,-50.26631,10),
+//                        new Point3D(26.27, 27.47, 2), new Point3D(12.43, -49.86, 2))
 //                        .setEmission(new Color(java.awt.Color.BLACK))
-//                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3))
+//                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3)),
 
+
+                //lights
+                new Cylinder(new Ray(new Point3D(100,46,0),new Vector(-14,0,0)),1,45)//עמוד תלייה
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Polygon(new Point3D(60,46,0),new Point3D(40,53,0),new Point3D(40,39,0))
+                .setEmission(new Color(java.awt.Color.BLACK)),
+                new Sphere(5,new Point3D(40,46,-7.5)).setEmission(new Color(java.awt.Color.YELLOW)),
+                //second light source
+                new Cylinder(new Ray(new Point3D(100,20,0),new Vector(-25,0,0)),1,35)
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Polygon(new Point3D(70,20,0),new Point3D(50,27,0),new Point3D(50,13,0))
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Sphere(5,new Point3D(50,20,-7.5)).setEmission(new Color(java.awt.Color.YELLOW)),
+                //third light
+                new Cylinder(new Ray(new Point3D(100,-3,0),new Vector(-25,0,0)),1,25)
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Polygon(new Point3D(77,-3,0),new Point3D(58,5,0),new Point3D(58,-10,0))
+                        .setEmission(new Color(java.awt.Color.BLACK)),
+                new Sphere(5,new Point3D(60,-3,-7.5)).setEmission(new Color(java.awt.Color.YELLOW))
 
         );
         scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));

@@ -189,6 +189,7 @@ public class PingPong {
                 new Polygon(new Point3D(60,46,0),new Point3D(40,53,0),new Point3D(40,39,0))
                 .setEmission(new Color(java.awt.Color.BLACK)),
                 new Sphere(5,new Point3D(40,46,-7.5)).setEmission(new Color(java.awt.Color.YELLOW)),
+
                 //second light source
                 new Cylinder(new Ray(new Point3D(100,20,0),new Vector(-25,0,0)),1,35)
                         .setEmission(new Color(java.awt.Color.BLACK)),
@@ -204,6 +205,8 @@ public class PingPong {
 
         );
         scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
+        scene.lights.add(new SpotLight(new Color(java.awt.Color.WHITE),new Point3D(60,-3,-7.5),new Vector(-25,0,0))
+                .setKl(0.0004).setKq(0.0000006));
 //        scene.lights.add(
 //                new SpotLight(new Color(java.awt.Color.WHITE), new Point3D(10, -10, -130), new Vector(-2, -2, -1))
 //                        .setKl(0.0001).setKq(0.000005));

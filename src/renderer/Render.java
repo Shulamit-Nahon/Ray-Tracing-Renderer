@@ -18,7 +18,7 @@ public class Render {
     Camera _camera = null;
     RayTracerBase _rayTracerBase = null;
 
-    private int threadsCount = 0;
+    private int threadsCount = 3;
     private static final int SPARE_THREADS = 2; // Spare threads if trying to use all the cores
     private boolean print = false; // printing progress percentage
 

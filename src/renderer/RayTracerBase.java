@@ -32,4 +32,12 @@ public abstract class RayTracerBase {
      * @return The {@link Color} resulting from the trace of the ray.
      */
     public abstract Color traceRay(Ray ray);
+
+    public Color traceRays(Ray[] rays) {
+        Color pixelColor = Color.BLACK;
+        for (Ray ray : rays) {
+            pixelColor = pixelColor.add(traceRay(ray));
+        }
+        return pixelColor;
+    }
 }

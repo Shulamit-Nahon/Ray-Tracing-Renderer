@@ -84,11 +84,11 @@ public class Camera {
      *
      * @param nX The number of the pixels along X axis
      * @param nY The number of the pixels along Y axis
-     * @param j The index of the pixel along X axis
-     * @param i he index of the pixel along Y axis
+     * @param col The index of the pixel along X axis
+     * @param row he index of the pixel along Y axis
      * @return ray passing through pixel(i,j) of the view plane
      */
-    public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
+    public Ray constructRayThroughPixel(int nX, int nY, int col, int row) {
         Point3D Pc = _p0.add(_vTo.scale(_distance));
 
         double Rx = _width / nX;
@@ -96,8 +96,8 @@ public class Camera {
 
         Point3D Pij = Pc;
 
-        double Xj = (j - (nX - 1) / 2d) * Rx;
-        double Yi = -(i - (nY - 1) / 2d) * Ry;
+        double Xj = (col - (nX - 1) / 2d) * Rx;
+        double Yi = -(row - (nY - 1) / 2d) * Ry;
 
         if (isZero(Xj) && isZero(Yi)) {
             return new Ray(_p0, Pij.subtract(_p0));

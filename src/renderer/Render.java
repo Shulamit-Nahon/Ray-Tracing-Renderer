@@ -5,7 +5,6 @@ import elements.Camera;
 import primitives.Color;
 import primitives.Ray;
 
-import java.time.Instant;
 import java.util.MissingResourceException;
 /**
  * Renderer class is responsible for generating pixel color map from a graphic
@@ -91,8 +90,7 @@ public class Render {
         /**
          * Default constructor for secondary Pixel objects
          */
-        public Pixel() {
-        }
+        public Pixel() { }
 
         /**
          * Internal function for thread-safe manipulating of main follow up Pixel object
@@ -238,9 +236,9 @@ public class Render {
      * @param row pixel's row number (pixel index in column)
      */
     private void castRay(int nX, int nY, int col, int row) {
-        Ray ray = _camera.constructRayThroughPixel(nX, nY, col, row);
-        Color color = _rayTracerBase.traceRay(ray);
-        _imageWriter.writePixel(col, row, color);
+        Ray[] rays = raysThroughPixel(subPixels, nX * subPixels, nY * subPixels, col * subPixels, row * subPixels);
+        Color color = _rayTracerBase.traceRays(rays);
+        _imageWriter.writePixel(col, row, color.reduce(subPixels*subPixels));
     }
 
     /**
@@ -297,20 +295,12 @@ public class Render {
             _rayTracerBase._scene.geometries.constructHierarchy();
 
             //rendering the image
-            int nX = _imageWriter.getNx() * subPixels;
-            int nY = _imageWriter.getNy() * subPixels;
+            int nX = _imageWriter.getNx();
+            int nY = _imageWriter.getNy();
             if (threadsCount == 0)
-              for (int i = 0; i < nY; i += subPixels) {
-                for (int j = 0; j < nX; j += subPixels) {
-
-                    Ray[] rays = raysThroughPixel(subPixels, nX, nY, i, j);
-
-                    Color pixelColor = Color.BLACK;
-                    for (Ray ray : rays) {
-                        pixelColor = pixelColor.add(_rayTracerBase.traceRay(ray));
-                    }
-
-                    _imageWriter.writePixel(j / subPixels, i / subPixels, pixelColor.reduce(subPixels*subPixels));
+              for (int row = 0; row < nY; ++row) {
+                for (int col = 0; col < nX; ++col) {
+                    castRay(nX, nY, row, col);
                 }
               }
             else renderImageThreaded();
@@ -327,7 +317,7 @@ public class Render {
         int index = 0;
         for (int i = 0; i < subPixels; i++) {
             for (int j = 0; j < subPixels; j++) {
-                rays[index++] = _camera.constructRayThroughPixel(nX, nY, y + i, x + j);
+                rays[index++] = _camera.constructRayThroughPixel(nX, nY, x + i, y + j);
             }
         }
         return rays;

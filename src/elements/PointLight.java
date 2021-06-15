@@ -9,7 +9,7 @@ import primitives.Vector;
  */
 public class PointLight extends Light implements LightSource{
 
-    private Point3D _position;
+    private final Point3D _position;
     /**
      * Factors (kc
      * , kl
@@ -22,16 +22,17 @@ public class PointLight extends Light implements LightSource{
 
     /**
      * set Kc
-     * @param kc
+     * @param kc constant
      * @return point light
      */
     public PointLight setKc(double kc) {
         _Kc = kc;
         return this;
     }
+
     /**
      * set kl
-     * @param kl
+     * @param kl linear
      * @return point light
      */
     public PointLight setKl(double kl) {
@@ -41,7 +42,7 @@ public class PointLight extends Light implements LightSource{
 
     /**
      * set Kq
-     * @param kq
+     * @param kq quadratic
      * @return point light
      */
     public PointLight setKq(double kq) {
@@ -50,22 +51,19 @@ public class PointLight extends Light implements LightSource{
     }
 
     /**
-     * constructor for
-     * @param intensity
-     * @param position
+     * constructor for the Point Light
+     * @param intensity the intensity of the point light
+     * @param position the position of the point light
 
      */
     public PointLight(Color intensity, Point3D position) {
         super(intensity);
         this._position=position;
-       // this._Kc=kc;
-        //this._Kl=kl;
-        //this._Kq=kq;
     }
 
     /**
      * get Intensity of Point Light
-     * @param p
+     * @param p the point of the point light
      * @return color Intensity
      */
     @Override
@@ -77,7 +75,7 @@ public class PointLight extends Light implements LightSource{
 
     /**
      * get L
-     * @param p
+     * @param p the point of the point light
      * @return Lighting direction value
      */
     @Override
@@ -87,7 +85,7 @@ public class PointLight extends Light implements LightSource{
 
     /**
      * get the Distance between light source to point
-     * @param point
+     * @param point the point that we want the distance from it
      * @return Distance between light source to point
      */
     @Override

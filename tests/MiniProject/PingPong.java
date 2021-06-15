@@ -92,8 +92,8 @@ public class PingPong {
                         new Point3D(0, 0, -15),
                         new Point3D(0, -150, -15),
                         new Point3D(-150, -150, -15))
-                        .setEmission(new Color(java.awt.Color.BLACK))
-                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+                        .setEmission(new Color(java.awt.Color.GRAY))
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0).setShininess(10)),
 
                 new Polygon(//right wall
                         new Point3D(150, 0, -10),
@@ -121,7 +121,7 @@ public class PingPong {
 
         scene.geometries.add(
                 new Polygon(
-                        new Point3D(20, 33, 10),
+                        new Point3D(20, 35, 10),
                         new Point3D(35, 33, 10),
                         new Point3D(25, -45, 10),
                         new Point3D(10, -45, 10)
@@ -238,7 +238,7 @@ public class PingPong {
                 new Sphere(5, new Point3D(52, 20, -7.5)).setEmission(new Color(java.awt.Color.WHITE))
                         .setMaterial(new Material().setDiffuse(0.25).setSpecular(0.25).setShininess(20)),
                 //third light
-                new Cylinder(new Ray(new Point3D(100, -3, 0), new Vector(-25, 0, 0)), 1, 25)
+                new Cylinder(new Ray(new Point3D(110, -3, 0), new Vector(-25, 0, 0)), 1, 25)
                         .setEmission(new Color(32, 32, 32)),
                 new Polygon(new Point3D(77, -3, 0), new Point3D(58, 5, 0), new Point3D(58, -10, 0))
                         .setEmission(new Color(32, 32, 32)),

@@ -82,7 +82,16 @@ public class PingPong {
 
     @Test
     public void Testping_pong_background3() {
-       // scene.setBackground(new Color(java.awt.Color.WHITE));
+        scene.setBackground(new Color(java.awt.Color.WHITE));
+        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
+
+//        //walls
+//        scene.geometries.add(new Polygon(
+//                new Point3D(200,200,-30),
+//                new Point3D(200,0,-30),
+//                new Point3D(0,200,-30),
+//                new Point3D(0,0,-30)).setEmission(new Color(java.awt.Color.BLACK)));
+
 
         scene.geometries.add( //
 
@@ -207,7 +216,7 @@ public class PingPong {
                         .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.3))
 
         );
-        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
+
 
         scene.lights.add(new SpotLight(new Color(java.awt.Color.YELLOW), new Point3D(10, -10, -130), new Vector(-2, -2, -1))
                 .setKl(0.0001).setKq(0.000005));

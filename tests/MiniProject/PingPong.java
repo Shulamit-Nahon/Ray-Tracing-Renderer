@@ -125,14 +125,14 @@ public class PingPong {
                         new Point3D(10, -45, 10)
                 )
                         .setEmission(new Color(java.awt.Color.BLACK))
-                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.19))
+                        .setMaterial(new Material().setDiffuse(0.4).setSpecular(0.3).setShininess(100).setKt(0.19)),
 
-//                new Cylinder(new Ray(new Point3D(25, -45, 20),new Vector(-15,0,-10)),2,20)
-//                .setEmission(new Color(java.awt.Color.LIGHT_GRAY))
-//                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
-//                new Cylinder(new Ray(new Point3D(35, 33, 10),new Vector(-15,2,0)),2,20)
-//                        .setEmission(new Color(java.awt.Color.LIGHT_GRAY))
-//                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10))
+                new Cylinder(new Ray(new Point3D(25, -45, 20),new Vector(-15,0,-10)),2,20)
+                .setEmission(new Color(java.awt.Color.LIGHT_GRAY))
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10)),
+               new Cylinder(new Ray(new Point3D(35, 33, 10),new Vector(-15,2,0)),2,20)
+                        .setEmission(new Color(java.awt.Color.LIGHT_GRAY))
+                        .setMaterial(new Material().setDiffuse(0.5).setSpecular(0.5).setShininess(10))
         );
         scene.geometries.add( //
 

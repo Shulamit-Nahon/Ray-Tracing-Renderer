@@ -11,8 +11,8 @@ import static primitives.Util.alignZero;
  */
 public class SpotLight extends PointLight  {
 
-    //direction of Spot Light
-    private final Vector _direction;
+    private final Vector _direction;  //direction of Spot Light
+
     /**
      * constructor for Spot Light
      *
@@ -23,6 +23,7 @@ public class SpotLight extends PointLight  {
         super(intensity, position);
         this._direction=direction.normalized();
     }
+
     /**
      * get Intensity of Spot Light
      *

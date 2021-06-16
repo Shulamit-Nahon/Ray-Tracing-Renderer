@@ -16,29 +16,10 @@ public class Cylinder extends Tube {
     final double height; //cylinder height value, radius and ray
     Plane base1;
     Plane base2;
-    double rad;//The width(rad*2) of the Cylinder
+    double rad; //The width(rad*2) of the Cylinder
 
     /**
-     * @return cylinder height value
-     */
-    public double getHeight() {
-        return height;
-    }
-
-    /**
-     * construct for cylinder
-     *
-     * @param axisRay Ray for The tube ray
-     * @param radius  double for Tube base radius value
-     * @param height  double cylinder height value
-     */
-//    public Cylinder(Ray axisRay, double radius, double height) {
-//        super(radius, axisRay);
-//        this.height = height;
-//    }
-
-    /**
-     * ctor for: Tube with limited height
+     * constructor for Tube with limited height
      *
      * @param ray    the start of the Cylinder
      * @param rad    The width(rad*2) of the Cylinder

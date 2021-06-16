@@ -1,32 +1,30 @@
 package elements;
 
 import primitives.*;
+
 /**
  *  interface for all lights which have a source.
- *
- * @author lea haimovich
- * @author shulamit nahon
  */
 public interface LightSource {
 
     /**
      *get Intensity of light
-     * @param p
+     * @param p the point that the function gets
      * @return the intensity of light source in point p
      */
-    public Color getIntensity(Point3D p);
+     Color getIntensity(Point3D p);
 
     /**
      *
-     * @param p
+     * @param p the point that the function gets
      * @return vector direction of light
      */
-    public Vector getL(Point3D p);
+     Vector getL(Point3D p);
 
     /**
      *get the Distance between light source to point
-     * @param point
+     * @param point the point that the function gets
      * @return Distance between light source to point
      */
-   public double getDistance(Point3D point);
+    double getDistance(Point3D point);
 }

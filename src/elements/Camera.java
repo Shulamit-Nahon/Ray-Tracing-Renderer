@@ -16,27 +16,6 @@ public class Camera {
     final Vector _vUp;
     final Vector _vRight;
 
-    /**
-     * @return the p0 point
-     */
-    public Point3D getP0() {
-        return _p0;
-    }
-
-    /**
-     * @return vT0
-     */
-    public Vector getvTo() {
-        return _vTo;
-    }
-
-    /**
-     * @return vUp
-     */
-    public Vector getvUp() {
-        return _vUp;
-    }
-
     private double _distance;
     private double _width;
     private double _height;
@@ -60,9 +39,9 @@ public class Camera {
     /**
      * borrowing from builder pattern
      *
-     * @param width
-     * @param height
-     * @return
+     * @param width set the width of the plane
+     * @param height set the height of the plane
+     * @return the view plane size
      */
     public Camera setViewPlaneSize(double width, double height) {
         _width = width;
@@ -71,7 +50,7 @@ public class Camera {
     }
 
     /**
-     * @param distance
+     * @param distance set the distance of the camera from the view plane
      * @return the camera with the current distance
      */
     public Camera setDistance(double distance) {

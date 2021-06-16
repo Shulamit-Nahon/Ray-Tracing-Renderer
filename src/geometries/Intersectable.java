@@ -14,7 +14,7 @@ public abstract class Intersectable {
 
     protected Border border;
 
-    public class GeoPoint {
+    public static class GeoPoint {
         public Geometry geometry;
         public Point3D point;
 

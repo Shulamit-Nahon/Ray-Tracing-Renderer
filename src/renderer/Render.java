@@ -347,8 +347,4 @@ public class Render {
             }
         }
     }
-
-
-
-
 }

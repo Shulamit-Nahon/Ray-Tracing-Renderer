@@ -2,23 +2,21 @@ package elements;
 
 import primitives.Color;
 
-import java.util.List;
-
 /**
  * abstract class for light
  */
 abstract public class Light {
 
-    // intensity color
-    protected Color _intensity;
+    protected Color _intensity; // intensity color
 
     /**
      * constructor for light
-     * @param intensity
+     * @param intensity of the light
      */
     protected Light(Color intensity){
         this._intensity=intensity;
     }
+
     /**
      * get Intensity of light
      * @return Intensity of light

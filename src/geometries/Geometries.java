@@ -1,12 +1,9 @@
 package geometries;
 
-import primitives.Point3D;
 import primitives.Ray;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 
 /**
  * A Geometries class
@@ -17,7 +14,7 @@ public class Geometries extends Intersectable {
     List<Intersectable> intersectables;
 
     /**
-     * @param intersectables_
+     * @param intersectables_ list of intersectables
      */
     public void add(Intersectable... intersectables_) {
         for (Intersectable item : intersectables_) {
@@ -35,7 +32,7 @@ public class Geometries extends Intersectable {
     }
 
     /**
-     * @param intersectables
+     * @param intersectables list of intersectables
      */
     public Geometries(Intersectable... intersectables) {
         this();
@@ -44,7 +41,7 @@ public class Geometries extends Intersectable {
     }
 
     /**
-     * @param ray
+     * @param ray the ray
      * @return list o intersections geopoints
      */
     @Override

@@ -1,1 +1,2 @@
-# ISE Shulamit Nahon & Lea Haimovich
+# Ray Tracing Renderer Shulamit Nahon & Lea Haimovich
+As part of the "Introduction to Software Engineering" course in Java: Designing a virtual 3D scene includes all the physics involved: rays, geometries, light source, shadows, reflections, transparency, camera, etc. Improving performance by using multi-threads and adaptive grid, applying principles like TDD, Refactoring, Agile methodologies, and more.

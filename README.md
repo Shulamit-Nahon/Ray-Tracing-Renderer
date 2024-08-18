@@ -11,8 +11,8 @@ using some fundamental design pattern.
 
 ## Authors
 
-- [@Daniel](https://github.com/dattali18/)
-- [@Itzick](https://github.com/itzickw/)
+- [@Shulamit](https://github.com/Shulamit-Nahon)
+- [@Lea](https://github.com/leaHaimovich)
 
 
 Software Engineering Concepts
